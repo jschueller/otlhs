@@ -1,0 +1,66 @@
+%define OTLHS_LHS_doc
+"LHS class generate design of experimients according to Latin Hypercube (LHS) technique.
+
+Available constructor:
+    LHSDesign( bounds, size)
+
+    LHSDesign( bounds, size, centeredDesign)
+
+Parameters
+----------
+bounds : :class:`~openturns.Interval`
+    Bounds of the uniform distributions.
+size : int
+    Size of the design.
+centeredDesign :  bool
+    Fix if design is centered on each selected strata (True) or if it is radomly genererated in the strata.
+    Default value is False
+
+Notes
+-----
+We suppose a multivariate distribution with uniform and independent marginals.
+The class enables to define aLHS design according to this distribution.
+
+Examples
+--------
+
+>>> import openturns as ot
+>>> import otlhs
+>>> # Fix the uniform bounds
+>>> # We fix lower bounds = [-1,-2,-3]
+>>> # and upper bounds = [1,2,3]
+>>> bounds = ot.Interval([-1,-2,-3], [1,2,3])
+>>> size = 100 # size of the design
+>>> lhsGenerate = otlhs.LHSDesign(bounds, size)
+"
+%enddef
+%feature("docstring") OTLHS::LHSDesign
+OTLHS_LHS_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LHS_generate_doc
+"The generate method builds a design.
+Each call of the method selects randomly a new starta and returns a design with fixed type (centered, random)
+
+Returns
+-------
+design : :class:`~openturns.NumericalSample`
+    A design of experimient
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Fix the uniform bounds
+>>> # We fix lower bounds = [-1,-2,-3]
+>>> # and upper bounds = [1,2,3]
+>>> bounds = ot.Interval([-1,-2,-3], [1,2,3])
+>>> size = 100 # size of the design
+>>> lhsGenerate = otlhs.LHSDesign(bounds, size)
+>>> # Get a design
+>>> design = lhsGenerate.generate()
+>>> # Generate a new design
+>>> newDesign = lhsGenerate.generate()"
+%enddef
+%feature("docstring") OTLHS::LHSDesign::generate
+OTLHS_LHS_generate_doc
+// ---------------------------------------------------------------------

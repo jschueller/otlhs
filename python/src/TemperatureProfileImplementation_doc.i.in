@@ -1,0 +1,28 @@
+%define OTLHS_TemperatureProfile_doc
+"Defines a temperature profile.
+
+Notes
+-----
+The temperature profile is used in simulated annealing context
+"
+%enddef
+%feature("docstring") OTLHS::TemperatureProfileImplementation
+OTLHS_TemperatureProfile_doc
+
+// ---------------------------------------------------------------------
+%define OTLHS_TemperatureProfile_call_doc
+"Compute the temperature T(i)
+
+Parameters
+----------
+i:  int
+    The index for whome we seek temperature
+
+Returns
+-------
+temperature:  float
+    The temperature"
+%enddef
+%feature("docstring") OTLHS::TemperatureProfileImplementation::operator()
+OTLHS_TemperatureProfile_call_doc
+// ---------------------------------------------------------------------

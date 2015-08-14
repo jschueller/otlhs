@@ -1,0 +1,219 @@
+%define OTLHS_PlotDesign_doc
+"The class builds a drawable argument of type `Pairs`. It represents the projection of design on 2D space using traditional scatter plots.
+Additionaly, the subdivision of the range is done and a grid is drawn in order to demonstrate the LHS behaviour.
+
+Available constructor:
+  PlotDesign(data, bounds, Nx, Ny, title)
+
+  PlotDesign(data, bounds, Nx, Ny)
+
+  PlotDesign(lhsResult, Nx, Ny, title)
+
+  PlotDesign(lhsResult, Nx, Ny)
+
+Parameters
+----------
+data : :class:`~openturns.NumericalSample` or 2d array like
+    Design to plot
+lhsResult : :class:`~otlhs.LHSResult`
+    Result class of LHS optimization
+bounds : :class:`~openturns.Interval`
+    Bounds of the underlying uniform distributions.
+Nx : int
+    Number of subdivision on x axis
+    Default value corresponds to Nx = size of data
+Ny : int
+    Number of subdivision on y axis
+    Default value corresponds to Ny = size of data
+title :  string
+    Name of the graph
+    Default value is an empty string
+
+Notes
+-----
+Even if PlotDesign is a drawable object, `Show` method could not be applied because there is no particular specification
+for this kind of drawable. Report to otlhs.plotdesign.PyPlotDesign
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(10)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, 10, 10)
+>>> # Nx and Ny not fixed ==> Nx=Ny=10
+>>> plot = otlhs.PlotDesign(design, bounds)
+>>> g = ot.Graph()
+>>> g.add(plot)
+>>> g.draw('myDesign', 640, 480, ot.GraphImplementation.PDF)"
+%enddef
+%feature("docstring") OTLHS::PlotDesign
+OTLHS_PlotDesign_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_getdata_doc
+"The method returns data used for scatter plots
+
+Returns
+-------
+data : :class:`~openturns.NumericalSample`
+    Used data for plots
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Fix Nx, Ny
+>>> Nx, Ny = 20, 20
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, Nx, Ny)
+>>> # Get data
+>>> data = plot.getData()"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::getData
+OTLHS_PlotDesign_getdata_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_getlabels_doc
+"The method returns the labels of the drawable.
+
+Returns
+-------
+labels : :class:`~openturns.Description`
+    Used labels
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Fix Nx, Ny
+>>> Nx, Ny = 20, 20
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, Nx, Ny)
+>>> # Get labels
+>>> labels = plot.getLabels()"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::getLabels
+OTLHS_PlotDesign_getlabels_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_setlabels_doc
+"The method returns the labels of the drawable.
+
+Parameters
+----------
+labels : :class:`~openturns.Description`
+    Labels to use
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Fix Nx, Ny
+>>> Nx, Ny = 20, 20
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, Nx, Ny)
+>>> # Set labels
+>>> plot.setLabels(['X1','X2', 'X3'])"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::setLabels
+OTLHS_PlotDesign_setlabels_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_gettitle_doc
+"The method returns the title of the drawable.
+
+Returns
+-------
+title : string
+    Used title
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Fix Nx, Ny
+>>> Nx, Ny = 20, 20
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, Nx, Ny)
+>>> # Get title
+>>> title = plot.getTitle()"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::getTitle
+OTLHS_PlotDesign_gettitle_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_settitle_doc
+"The method returns the title of the drawable.
+
+Parameters
+----------
+title : string
+    Title to fix
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Fix Nx, Ny
+>>> Nx, Ny = 20, 20
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, Nx, Ny)
+>>> # Set the title
+>>> plot.setTitle('My data experiment')"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::setTitle
+OTLHS_PlotDesign_settitle_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_draw_doc
+"The method returns the draw command used for plots.
+
+Returns
+-------
+title : string
+    Used draw command
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> # Design is a here a Normal sample
+>>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
+>> # Fix bounds
+>>> bounds = ot.Interval(3)
+>>> # Fix Nx, Ny
+>>> Nx, Ny = 20, 20
+>>> # Plot the design
+>>> plot = otlhs.PlotDesign(design, bounds, Nx, Ny)
+>>> # Get draw command
+>>> draw = plot.draw()"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::draw
+OTLHS_PlotDesign_draw_doc
+// ---------------------------------------------------------------------
+%define OTLHS_PlotDesign_buildlabels_doc
+"
+The method builds default labels if design does not have its own description
+"
+%enddef
+%feature("docstring") OTLHS::PlotDesign::buildDefaultLabels
+OTLHS_PlotDesign_buildlabels_doc
+// ---------------------------------------------------------------------

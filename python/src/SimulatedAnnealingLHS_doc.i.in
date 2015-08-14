@@ -1,0 +1,63 @@
+%define OTLHS_SimulatedAnnealing_doc
+"SimulatedAnnealingLHS class
+
+Performs the optimization of an LHS using simulated annealing algorithm.
+
+Usage
+-----
+    SimulatedAnnealingLHS(lhsDesign)
+    SimulatedAnnealingLHS(lhsDesign, profile)
+    SimulatedAnnealingLHS(lhsDesign, profile, spaceFilling)
+    SimulatedAnnealingLHS(initialDesign, bounds)
+    SimulatedAnnealingLHS(initialDesign, bounds, profile)
+    SimulatedAnnealingLHS(initialDesign, bounds, profile, spaceFilling)
+
+Parameters
+----------
+
+lhsDesign: LHSDesign
+    Factory that generate designs
+
+initialDesign: 2d-array sequence
+    Initial design to be optimized
+
+bounds : Interval
+    Bounds of designs
+
+profile: TemperatureProfile
+    Temperature profile used by the simulated annealing algorithm
+    Default one is GeometricProfile
+
+spaceFilling: SpaceFilling
+    Criterion to be optimized
+    Default one is SpaceFillingMinDist
+
+Notes
+-----
+
+With the first constructor, the initial design is generated thanks to lhsDesign. With the second usage, we fix it.
+Starting from this design, a new design is obtained by permuting one random coordinate of two randomly chosen elements; by construction, this design is also an LHS design. 
+If the new design is better than the previous one, it is kept.  
+If it is worse, it may anyway be kept with some probability, which depends on how these designs compare, but also on a temperature profile 
+T which decreases over time.  This means that jumping away from local extrema becomes less probable over time.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> dimension = 3
+>>> bounds = ot.Interval(dimension)
+>>> size = 100
+>>> # Build standard randomized LHS algorithm
+>>> lhsDesign = otlhs.LHSDesign(bounds, size)
+>>> # Defining space fillings
+>>> spaceFilling = otlhs.SpaceFillingC2()
+>>> # Geometric profile
+>>> geomProfile = otlhs.GeometricProfile(10.0, 0.95, 2000)
+>>> # Simulated Annealing LHS with geometric temperature profile, C2 optimization
+>>> optimalLHSAlgorithm = otlhs.SimulatedAnnealingLHS(lhs, geomProfile, spaceFilling)"
+%enddef
+%feature("docstring") OTLHS::SimulatedAnnealingLHS
+OTLHS_SimulatedAnnealing_doc
+
+// ---------------------------------------------------------------------

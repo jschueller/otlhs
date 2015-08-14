@@ -1,0 +1,48 @@
+%define OTLHS_OptimalLHS_doc
+"OptimalLHS class.
+
+Notes
+-----
+Perform the generation of optimal LHS designs."
+
+%enddef
+%feature("docstring") OTLHS::OptimalLHSImplementation
+OTLHS_OptimalLHS_doc
+
+// ---------------------------------------------------------------------
+%define OTLHS_OptimalLHS_generate_doc
+"Generate an optimal design
+
+Returns
+-------
+value:  :class:`~otlhs.LHSResult`
+       Result of generation that contains the optimal design, some criteria and history"
+%enddef
+%feature("docstring") OTLHS::OptimalLHSImplementation::generate
+OTLHS_OptimalLHS_generate_doc
+
+// ---------------------------------------------------------------------
+%define OTLHS_OptimalLHS_getlhs_doc
+"Returns the LHSDesign
+
+Returns
+-------
+value:  :class:`~otlhs.LHSDesign`
+       Result the factory that builds initial design to be optimized"
+%enddef
+%feature("docstring") OTLHS::OptimalLHSImplementation::getLHS
+OTLHS_OptimalLHS_getlhs_doc
+
+// ---------------------------------------------------------------------
+%define OTLHS_OptimalLHS_get_space_filling_doc
+"Returns the Space Filling criterion to be optimized
+
+Returns
+-------
+value:  :class:`~otlhs.SpaceFilling`
+       Criterion function to be optimized"
+%enddef
+%feature("docstring") OTLHS::OptimalLHSImplementation::getSpaceFilling
+OTLHS_OptimalLHS_get_space_filling_doc
+
+// ---------------------------------------------------------------------

@@ -1,0 +1,39 @@
+%define OTLHS_SpaceFillingMinDist_doc
+"Space filling minimal distance criterion
+
+Notes
+-----
+Compute the minimal distance of sample points
+"
+
+%enddef
+%feature("docstring") OTLHS::SpaceFillingMinDist
+OTLHS_SpaceFillingMinDist_doc
+// ---------------------------------------------------------------------
+%define OTLHS_SpaceFillingMinDist_evaluate_doc
+"Compute the MinDist criterion for a specific design
+
+Parameters
+----------
+design:  :class:`~openturns.NumericalSample` or 2d array like
+    The design
+
+Returns
+-------
+crit:  float
+    The MinDist criterion
+
+Examples
+--------
+
+>>> import openturns as ot
+>>> import otlhs
+>>> # Build an LHS using openturns class
+>>> lhs = ot.LHSExperiment(100)
+>>> design = lhs.generate()
+>>> # Compute the MinDist criterion
+>>> crit = otlhs.SpaceFillingMinDist().evaluate(design)"
+%enddef
+%feature("docstring") OTLHS::SpaceFillingMinDist::evaluate
+OTLHS_SpaceFillingMinDist_evaluate_doc
+// ---------------------------------------------------------------------

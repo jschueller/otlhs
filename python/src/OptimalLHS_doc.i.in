@@ -1,0 +1,13 @@
+// OptimalLHS docstrings are defined in OptimalLHSImplementation_doc.i.in
+
+%feature("docstring") OTLHS::OptimalLHS
+OTLHS_OptimalLHS_doc
+
+%feature("docstring") OTLHS::OptimalLHS::genrate
+OTLHS_OptimalLHS_generate_doc
+
+%feature("docstring") OTLHS::OptimalLHS::getLHS
+OTLHS_OptimalLHS_getlhs_doc
+
+%feature("docstring") OTLHS::OptimalLHS::getSpaceFilling
+OTLHS_OptimalLHS_get_space_filling_doc

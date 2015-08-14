@@ -1,0 +1,10 @@
+// SpaceFilling docstrings are defined in SpaceFillingImplementation_doc.i.in
+
+%feature("docstring") OTLHS::SpaceFilling
+OTLHS_SpaceFilling_doc
+
+%feature("docstring") OTLHS::SpaceFilling::evaluate
+OTLHS_SpaceFilling_evaluate_doc
+
+%feature("docstring") OTLHS::SpaceFilling::perturbLHS
+OTLHS_SpaceFilling_perturb_lhs_doc

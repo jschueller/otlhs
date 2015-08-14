@@ -1,0 +1,7 @@
+// TemperatureProfile docstrings are defined in TemperatureProfileImplementation_doc.i.in
+
+%feature("docstring") OTLHS::TemperatureProfile
+OTLHS_TemperatureProfile_doc
+
+%feature("docstring") OTLHS::Temperature::operator()
+OTLHS_TemperatureProfile_call_doc

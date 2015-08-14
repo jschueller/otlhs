@@ -1,0 +1,231 @@
+% Permission is granted to copy, distribute and/or modify this document
+% under the terms of the GNU Free Documentation License, Version 1.2
+% or any later version published by the Free Software Foundation;
+% with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+% Texts.  A copy of the license is included in the section entitled "GNU
+% Free Documentation License".
+% Copyright 2014 EDF
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Reference Guide}
+
+The OTLHS library provide algorithms to compute optimized Latin Hypercube Sample designs.
+
+\subsection{Optimized LHS design}
+
+\MathematicalDescription{
+\underline{\textbf{Goal}}\\
+
+Let \vect{x}=$(x_1,\cdots, x_d)$ be a random vector of input parameters.
+Latin Hypercube Sample (LHS) is a way to distribute $N$ sample points: each
+parameter range is divided into $N$ equal intervals, and sample points are
+chosen such that any hyperplane in that dimension contains one and only one
+sample point.\\
+
+The goal of this module is to improve standard LHS techniques by minimizing
+a space filling criterion.\\
+
+\underline{\textbf{Principles}}\\
+
+We may notice two types of LHS designs:
+\begin{itemize}
+ \item Centered design is obtained by choosing for each point the center of the corresponding cell
+ \item Randomized LHS is obtained by adding random perturbations inside each cell
+\end{itemize}
+
+Let us fix the following properties for the input vector \vect{x}:
+\begin{itemize}
+ \item Its marginals are independent
+ \item Its associated probabilistic measure is
+ \begin{equation}\label{model_proba}
+ \mathcal{L}_{X}(x_1,...,x_d) = \mathcal{U}(a_1, b_1) \otimes \mathcal{U}(a_2, b_2)\otimes\cdots\otimes\mathcal{U}(a_d, b_d)
+\end{equation}
+with $\mathcal{U}$ the uniform distribution.
+
+In practice, we look for a design in the space $[0,1]^d$ and we use an inverse
+iso-probabilistic transformation to get the result in the original domain.
+\end{itemize}
+
+Let $\phi : [0,1]^d \rightarrow \mathbb{R}^{+}$ be a a space filling criterion, which is a measure of ``accuracy'' of an optimal LHS design. 
+Most of these criteria focus on discrepancy, which measures how far a given distribution of points deviates from a perfectly uniform one.\\
+Two space filling criteria are implemented:
+\begin{itemize}
+ \item The centered $L^2$-discrepancy, called $C_2$ and given by:
+\begin{multline}\label{c2_dev}
+C_2(X_{d}^N)^2 = \left(\frac{13}{12}\right)^{d} - \frac{2}{N} \sum_{i=1}^{N} \prod_{k=1}^{d} \left( 1 + \frac{1}{2} |x_k^{(i)} - 0.5| - \frac{1}{2} |x_k^{(i)} - 0.5|^2 \right)\\
+             + \frac{1}{N^2} \sum_{i,j=1}^{N} \prod_{k=1}^{d} \left( 1 + \frac{1}{2} |x_k^{(i)} - 0.5| + \frac{1}{2} |x_k^{(j)} - 0.5| - \frac{1}{2} |x_k^{(i)} - x_k^{(j)}| \right)
+\end{multline}
+ This discrepancy is to be minimized to get an optimal design.
+ \item The mindist criterion (minimal distance between two points in the design):
+ \begin{equation}
+  \phi(X) = min_{} ||x^{(i)} - x^{(j)} ||_{L^2}, \forall i\neq j=1,\cdots N
+ \end{equation}
+ This criterion is to be maximized.
+ \item In practice, the $\phi_p$ criterion is used instead of mindist and writes:
+ \begin{equation}
+  \phi_p(X) = \left( \sum_{1\leq i < j \leq N} ||x^{(i)} - x^{(j)}||^{-p}_{L^2} \right)^{\frac{1}{p}}
+ \end{equation}
+This is supposed to be more robust. When $p$ tends to infinity, optimizing a design with $\phi_p$ is equivalent to optimizing a design with <<mindist>>. This criterion is to be minimized to get an optimal
+design.
+\end{itemize}
+
+The objective is to a LHS design $X_{d}^{N}$ that minimizes a space filling criterion $\phi$ (or maximizes mindist). For that purpose, two techniques are implemented and presented
+hereafter.\\
+%  \begin{equation}\label{optim_pb}
+%  \operatorname{arg\,min}\,\{\phi(X_{d}^{N})\ with\ X_{d}^{N}: LHS\}
+% \end{equation}
+
+{\textbf{Monte Carlo}}\\
+This problem can be approximated by a Monte Carlo algorithm: a fixed number of designs are generated, and the optimal one is kept. This algorithm is trivial, and described
+in Algorithm~\ref{algo_MC}.
+
+One of the major drawbacks of Monte Carlo sampling is the CPU time consumption, because the number of generated designs must be high.
+
+{\textbf{Simulated Annealing}}\\
+An alternate solution is to use an adapted simulated annealing method, which we will now describe.\\
+Starting from an LHS design, a new design is obtained by permuting one random coordinate of two randomly chosen elements; by construction, this design is also an LHS design. If the new design is better than the previous one, it is kept.  If it is worse, it may anyway be kept with some probability, which depends on how these designs compare, but also on a temperature profile $T$ which decreases over time.  This means that jumping away from local extrema becomes less probable over time.
+This algorithm is detailed in Algorithm~\ref{algo_simu_annealing}.
+
+It is important to highlight here that this specific permutation has been chosen in this algorithm because it allows highly efficient computations of criterion during simulated annealing process.  The naive criterion evaluation, as is done in Monte Carlo algorithm, has a complexity of $\mathcal{O}(d\times N^2)$ for $C_2$ and $\phi_p$ criteria.
+
+
+Let us first illustrate with the $C_2$ criterion. We set $z_{ik}=x_{ik}-0.5$, equation~\eqref{c2_dev} rewrites:
+\begin{equation*}
+C_2(X_{d}^N)^2 = \left(\frac{13}{12}\right)^{d} +\sum_{i=1}^{N}\sum_{j=1}^{N} c_{ij}
+\end{equation*}
+with:
+\begin{equation}
+c_{ij}= \,\,\,\left \{
+\begin{aligned}
+&\frac{1}{N^2}\prod_{k=1}^{d}\frac{1}{2}(2+|z_{ik}|+|z_{jk}|-|z_{ik}-z_{jk}|)\,\,\,\, \textrm{if}\,\, i\neq j \\
+&\frac{1}{N^2}\prod_{k=1}^{d}(1+|z_{ik}|)-\frac{2}{N}\prod_{k=1}^{d}(1+\frac{1}{2}|z_{ik}|-\frac{1}{2}z_{ik}^2) \,\,\,\,\textrm{otherwise} \\
+\end{aligned}
+\right.
+\label{prior_GN}
+\end{equation}
+We set $c^{\prime}$ the elements of a new design $X^{\prime N}_{d}$ obtained by permuting a coordinate of sample points $i_1$ and $i_2$.
+We can see that
+\begin{equation}
+\left \{
+\begin{aligned}
+& c^{\prime}_{ij}=c_{ij} \;\forall i, j \text{ such that } 1\leq i,j\leq N,\, i\notin \{i_1,i_2\},\, j\notin \{i_1,i_2\}\\
+& c^{\prime}_{i_1i_2}=c_{i_1i_2}\\
+& c_{ij}=c_{ji} \;\forall 1\leq i,j\leq N
+\end{aligned}
+\right.
+\label{cond_update}
+\end{equation}
+and thus, $C_2(X')$ becomes:
+\begin{equation*}
+C_2(X^{\prime N}_{d})^2 = C_2(X^N_d)^2
+     + c^{\prime}_{i_1i_1} + c^{\prime}_{i_2i_2} + 2\sum_{\substack{1\leq j\leq N\\j\neq i_1,i_2}} (c^{\prime}_{i_1j}+c^{\prime}_{i_2j})\\
+  {} - c_{i_1i_1} - c_{i_2i_2} - 2\sum_{\substack{1\leq j\leq N\\j\neq i_1,i_2}} (c_{i_1j}+c_{i_2j})
+\end{equation*}
+Updating $C_2$ criterion can be performed by a $\mathcal{O}(N)$ algorithm, which has a much better complexity than a naive computation.\\
+
+The same trick can also be applied on $\phi_p$ criterion, because we can write
+ \begin{equation}
+  \phi_p(X)^p
+  = \sum_{1\leq i < j \leq N} ||x^{(i)} - x^{(j)}||^{-p}_{L^2}
+  = \frac{1}{2} \sum_{i=1}^N \sum_{\substack{1\leq j\leq N\\j\neq i}} ||x^{(i)} - x^{(j)}||^{-p}_{L^2}
+  = \sum_{i=1}^N \sum_{j=1}^N f_{ij}
+ \end{equation}
+with
+ \begin{equation}
+f_{ij}= \,\,\,\left \{
+\begin{aligned}
+& \frac{||x^{(i)} - x^{(j)}||^{-p}_{L^2}}{2}, & i \neq j\\
+& 0, & i=j
+\end{aligned}
+\right.
+\end{equation}
+These $f_{ij}$ coefficients satisfy the same conditions as in~\eqref{cond_update}, so the same computations give:
+\begin{equation*}
+\phi_p(X_{d}^{\prime N})^p = \phi_p(X_{d}^N)^p
+  + 2\sum_{\substack{1\leq j\leq N\\j\neq i_1,i_2}} (f^{\prime}_{i_1j}+f^{\prime}_{i_2j})
+  - 2\sum_{\substack{1\leq j\leq N\\j\neq i_1,i_2}} (f_{i_1j}+f_{i_2j})
+\end{equation*}
+
+\paragraph{Remark} In practice, a marginal transformation is performed to map the initial multivariate distribution into $[0,1]^d$. Optimization is performed in $[0,1]^d$
+and the inverse transformation maps the design into the initial space.
+}
+{
+% Autres notations et appellations
+}
+
+
+\Methodology{
+This method is part of the step C <<Propagation of uncertainty>> of the global methodology to evaluate a criterion for the output value defined in step A <<Specifying the Criteria and the Case Study>>.
+It requires the specification of the joined probability density function of the input variables. The PDF must have an independent copula.
+}
+{%
+G. Damblin, M. Couplet and B. Iooss. \textit{Numerical studies of space filling designs: optimization of Latin hypercube samples and subprojection properties.} Journal of Simulation, 7:276-289, 2013.\\
+K-T. Fang, R. Li, and A. Sudjianto. \textit{Design and modeling for computer experiments.} Chapman \& Hall\slash CRC, 2006.\\
+R. Jin, W. Chen, and A. Sudjianto. \textit{An efficient algorithm for constructing optimal design of computer experiments.} Journal of Statistical Planning and Inference, 134 :268-287, 2005.\\
+J.R. Koehler and A.B. Owen. \textit{Computer experiments. In S. Ghosh and C.R. Rao, editors, Design and analysis of experiments, volume 13 of Handbook of statistics.} Elsevier, 1996.\\
+Johnson M, Moore L and Ylvisaker D (1990). \textit{Minimax and maximin distance design.} Journal of Statistical Planning and Inference 26(2): 131-148.\\
+McKay M, Beckman R and Conover W (1979). \textit{A comparison of three methods for selecting values of input variables in the analysis of output from a computer code.} Technometrics 21(2): 239-245.\\
+D. Morris and J. Mitchell. \textit{Exploratory designs for computationnal experiments.} Journal of Statistical Planning and Inference, 43 :381-402, 1995.\\
+Pronzato L and M\"uller W (2012). \textit{Design of computer experiments: Space filling and beyond.} Statistics and Computing 22(3): 681-701.\\
+}
+
+\begin{algorithm}[htbp]
+\SetKwFunction{PhiC}{$\phi$}
+\SetKwFunction{LHSGenerate}{LHSGenerate}
+\SetKwInOut{Input}{input}
+\Input{bounds: the bounds of uniform distributions\\
+       N: design size\\
+       isCentered: boolean (centered if true, random otherwise)\\
+       \PhiC: space filling criterion\\
+       MC: number of simulations}
+\SetKwInOut{Output}{output}
+\Output{LHS: an optimal design\\
+        phi: value of criterion}
+\BlankLine
+ phi.opt <- 1e308\;
+ \For{$i\leftarrow 1$ \KwTo $MC$}
+ {
+  lhs <- LHSGenerate(bounds,N,isCentered)\;
+  phi <- \PhiC(lhs)\;
+ \If{phi $<$ phi.opt}{lhs.opt <- lhs\; phi.opt<-phi\;}
+ }
+ \caption{Monte Carlo optimization of LHS design}
+ \label{algo_MC}
+\end{algorithm}
+
+\begin{algorithm}[htbp]
+\SetKwFunction{PhiC}{$\phi$}
+\SetKwFunction{LHSGenerate}{LHSGenerate}
+\SetKwInOut{Input}{input}
+\Input{bounds: the bounds of uniform distributions\\
+       N: design size\\
+       isCentered: boolean (centered if true, random otherwise)\\
+       \PhiC: space filling criterion\\
+       nrIter: number of iterations\\
+       T: temperature profile}
+\SetKwInOut{Output}{output}
+\Output{LHS: an optimized design\\
+        phi: value of criterion}
+\BlankLine
+\SetKwFunction{Random}{RandomGenerate}
+ lhs.opt <- LHSGenerate(bounds, N, isCentered) \;
+ phi.opt <- \PhiC(lhs.opt)\;
+ i <- 1\;
+ \While{i < nrIter}{
+  point1, point2, dim <- \Random(3)\;
+  LHSnew <-lhs.opt\;
+  swap(LHSnew[point1, dim] , lhs.opt[point2,  dim])\;
+  phi <- \PhiC(LHSnew)\;
+  p <- $\text{min}(\exp(-\frac{\text{phi} - \text{phi.opt}}{T(i)}), 1)$\;
+  \uIf{p==1}{lhs.opt <- LHSnew\; phi.opt<-phi\;}
+  \uElse{dist <- Bernoulli(p)\; b <- dist.generate()\;
+  \If{b==1}{lhs.opt <- LHSnew\; phi.opt<-phi\;}
+  }
+  i <- i + 1
+ }
+ \caption{LHS optimization using Simulated Annealing}
+ \label{algo_simu_annealing}
+\end{algorithm}
+

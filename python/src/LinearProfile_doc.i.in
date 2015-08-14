@@ -1,0 +1,68 @@
+%define OTLHS_LinearProfile_doc
+"Linear temperature profile
+
+Available constructor:
+  LinearProfile(T0, iMax)
+
+
+Parameters
+----------
+T0 : float
+    Initial temperature
+iMax : int
+    Number of maximal iterations
+
+Notes
+-----
+The temperature write:
+
+.. math::
+    :nowrap:
+
+    \begin{equation*}
+        T(i) = T_0*(1 - \frac{i}{iMax}), i \in [0,iMax]
+    \end{equation*}
+
+Examples
+--------
+
+>>> import openturns as ot
+>>> import otlhs
+>>> # Define a profile
+>>> T0 = 10.0
+>>> iMax = 100
+>>> linearProfile = otlhs.LinearProfile(T0, iMax)
+"
+%enddef
+%feature("docstring") OTLHS::LinearProfile
+OTLHS_LinearProfile_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LinearProfile_call_doc
+"Compute the temperature T(i)
+
+Parameters
+----------
+i:  int
+    The index for whome we seek temperature
+
+Returns
+-------
+temperature:  float
+    The temperature
+
+Examples
+--------
+
+>>> import openturns as ot
+>>> import otlhs
+>>> # Define a profile
+>>> T0 = 10.0
+>>> iMax = 100
+>>> linearProfile = otlhs.LinearProfile(T0, iMax)
+>>> temperature = linearProfile(10)
+>>> print(temperature)
+9.0"
+%enddef
+%feature("docstring") OTLHS::LinearProfile::operator()
+OTLHS_LinearProfile_call_doc
+// ---------------------------------------------------------------------

@@ -1,0 +1,164 @@
+%define OTLHS_LHSResult_doc
+"LHSResult resumes an LHS optimization using Monte Carlo or Simulated Annealing algorithms
+
+Available constructor:
+    LHSResult(bounds, spaceFilling, nRestart);
+
+Parameters
+----------
+bounds : :class:`~openturns.Interval`
+    Bounds of the uniform distributions.
+spaceFilling : :class:`~otlhs.SpaceFilling`
+    The space filling criteria used by optimization algorithm
+nRestart : int
+    The number of restarts performed by optimization algorithm
+
+Notes
+-----
+
+This class is not built by hand, but returned by optimization algorithms.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
+>>> profile = otlhs.GeometricProfile()
+>>> spaceFilling = otlhs.SpaceFillingC2()
+>>> # Optim algo
+>>> algo = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
+>>> # Get LHSResult
+>>> result = algo.generate()
+"
+%enddef
+%feature("docstring") OTLHS::LHSResult
+OTLHS_LHSResult_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LHSResult_get_bounds_doc
+"Returns the bounds of the underlying distribution
+
+Returns
+-------
+bounds : :class:`~openturns.Interval`
+    Bounds of the uniform distributions.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
+>>> profile = otlhs.GeometricProfile()
+>>> spaceFilling = otlhs.SpaceFillingPhiP(10)
+>>> # Optim algo
+>>> algo = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
+>>> # Get LHSResult
+>>> result = algo.generate()
+>>> bounds = result.getBounds()"
+%enddef
+%feature("docstring") OTLHS::LHSResult::getBounds
+OTLHS_LHSResult_get_bounds_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LHSResult_get_optimal_design_doc
+"Returns the optimal design
+
+Returns
+-------
+design : :class:`~openturns.NumericalSample`
+    The design that optimizes the criterion.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
+>>> spaceFilling = otlhs.SpaceFillingPhiP(10)
+>>> # By Monte Carlo
+>>> algoMC = otlhs.MonteCarloLHS(lhs, 100000, spaceFilling)
+>>> # Get LHSResult
+>>> resultMC = algoMC.generate()
+>>> optimalDesignMC = resultMC.getOptimalDesign()
+>>> # By simulated annealing, with restart
+>>> profile = otlhs.GeometricProfile()
+>>> algoSA = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
+>>> # Get LHSResult
+>>> resultSA = algoSA.generate(50)
+>>> optimalDesignSA = resultSA.getOptimalDesign()
+>>> # Get optimal results for all restarts
+>>> optimRestart = [resultSA.getOptimalDesign(i) for i in range(resultSA.getNumberOfRestarts())]"
+%enddef
+%feature("docstring") OTLHS::LHSResult::getOptimalDesign
+OTLHS_LHSResult_get_optimal_design_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LHSResult_get_algo_history_doc
+"Returns internal values computed during optimization algorithm.
+
+Returns
+-------
+history : :class:`~openturns.NumericalPoint`
+    Some internal values computed during optimization algorithm.
+    SimulatedAnnealingLHS stores criterion value, temperature
+    and probability at each iteration.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
+>>> profile = otlhs.GeometricProfile()
+>>> spaceFilling = otlhs.SpaceFillingPhiP(50)
+>>> algoSA = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
+>>> # Get LHSResult
+>>> resultSA = algoSA.generate(50)
+>>> criterionHistory = resultSA.getAlgoHistory()"
+%enddef
+%feature("docstring") OTLHS::LHSResult::getAlgoHistory
+OTLHS_LHSResult_get_algo_history_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LHSResult_get_c2_doc
+"Returns the C2 criterion evaluated on the optimal design
+
+Returns
+-------
+c2 : float
+    The C2 criterion.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
+>>> profile = otlhs.GeometricProfile()
+>>> spaceFilling = otlhs.SpaceFillingPhiP(50)
+>>> algoSA = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
+>>> # Get LHSResult
+>>> resultSA = algoSA.generate()
+>>> c2 = resultSA.getC2()"
+%enddef
+%feature("docstring") OTLHS::LHSResult::getC2
+OTLHS_LHSResult_get_c2_doc
+// ---------------------------------------------------------------------
+%define OTLHS_LHSResult_get_phi_p_doc
+"Returns the PhiP criterion evaluated on the optimal design
+
+Returns
+-------
+phiP : float
+    The PhiP criterion.
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
+>>> profile = otlhs.GeometricProfile()
+>>> spaceFilling = otlhs.SpaceFillingPhiP(50)
+>>> algoSA = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
+>>> # Get LHSResult
+>>> resultSA = algoSA.generate()
+>>> phip = resultSA.getPhiP()"
+%enddef
+%feature("docstring") OTLHS::LHSResult::getPhiP
+OTLHS_LHSResult_get_phi_p_doc
+// ---------------------------------------------------------------------
+// LHSResult docstrings are defined in LHSResult_doc.i.in
+

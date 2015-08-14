@@ -1,0 +1,47 @@
+%define OTLHS_MonteCarloLHS_doc
+"MonteCarloLHS class.
+ 
+Performs the optimization of an LHS using MonteCarlo simulations.
+
+Usage
+-----
+    MonteCarloLHS(lhsDesign, N)
+    MonteCarloLHS(lhsDesign, N, spaceFilling)
+
+Parameters
+----------
+
+lhsDesign: LHSDesign
+     Factory that generate designs
+
+N : int
+    Number of simulations
+
+spaceFilling: SpaceFilling
+    Criterion to be optimized
+    Default spaceFilling is MinDist
+
+Notes
+-----
+MonteCarloLHS generate N designs using lhsDesign and returns the optimal one with respect to spaceFilling
+
+Examples
+--------
+>>> import openturns as ot
+>>> import otlhs
+>>> dimension = 3
+>>> bounds = ot.Interval(dimension)
+>>> size = 100
+>>> # Build standard randomized LHS algorithm
+>>> lhsDesign = otlhs.LHSDesign(bounds, size)
+>>> # Defining space fillings
+>>> spaceFilling = otlhs.SpaceFillingC2()
+>>> # RandomBruteForce MonteCarlo with N designs (LHS with C2 optimization)
+>>> N = 10000
+>>> optimalLHSAlgorithm = otlhs.MonteCarloLHS(lhsDesign, N, spaceFilling)
+"
+%enddef
+%feature("docstring") OTLHS::MonteCarloLHS
+OTLHS_MonteCarloLHS_doc
+
+// ---------------------------------------------------------------------

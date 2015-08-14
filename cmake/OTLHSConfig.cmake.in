@@ -1,0 +1,41 @@
+#                                               -*- cmake -*-
+#
+#  OTLHSConfig.cmake(.in)
+#
+#  Find OTLHS includes and libraries
+#
+#  Copyright (C) 2005-2014 Phimeca
+#
+
+# Use the following variables to compile and link against OTLHS:
+#  OTLHS_FOUND          - True if OTLHS was found on your system
+#  OTLHS_USE_FILE       - The file making OTLHS usable
+#  OTLHS_DEFINITIONS    - Definitions needed to build with OTLHS
+#  OTLHS_INCLUDE_DIRS   - List of directories where OTLHS' header file are
+#  OTLHS_LIBRARY        - Library name
+#  OTLHS_LIBRARIES      - List of libraries to link against
+#  OTLHS_LIBRARY_DIRS   - List of directories containing OTLHS' libraries
+#  OTLHS_ROOT_DIR       - The base directory of OTLHS
+#  OTLHS_VERSION_STRING - A human-readable string containing the version
+#  OTLHS_VERSION_MAJOR  - The major version of OTLHS
+#  OTLHS_VERSION_MINOR  - The minor version of OTLHS
+#  OTLHS_VERSION_PATCH  - The patch version of OTLHS
+
+set ( OTLHS_FOUND 1 )
+set ( OTLHS_USE_FILE     "@OTLHS_USE_FILE@" )
+
+set ( OTLHS_DEFINITIONS  "@OTLHS_DEFINITIONS@" )
+set ( OTLHS_INCLUDE_DIR  "@OTLHS_INCLUDE_DIR@" )
+set ( OTLHS_INCLUDE_DIRS "@OTLHS_INCLUDE_DIRS@" )
+set ( OTLHS_LIBRARY      "@OTLHS_LIBRARY@" )
+set ( OTLHS_LIBRARIES    "@OTLHS_LIBRARIES@" )
+set ( OTLHS_LIBRARY_DIRS "@OTLHS_LIBRARY_DIRS@" )
+set ( OTLHS_ROOT_DIR     "@OTLHS_ROOT_DIR@" )
+
+set ( OTLHS_VERSION_STRING "@OTLHS_VERSION_STRING@" )
+set ( OTLHS_VERSION_MAJOR  "@OTLHS_VERSION_MAJOR@" )
+set ( OTLHS_VERSION_MINOR  "@OTLHS_VERSION_MINOR@" )
+set ( OTLHS_VERSION_PATCH  "@OTLHS_VERSION_PATCH@" )
+
+set (OTLHS_PYTHON@PYTHON_VERSION_MAJOR@_MODULE_PATH "@OTLHS_PYTHON_MODULE_PATH@")
+

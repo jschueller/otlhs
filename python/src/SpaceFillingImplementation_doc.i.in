@@ -1,0 +1,34 @@
+%define OTLHS_SpaceFilling_doc
+"Space filling computation
+
+Notes
+-----
+Compute a space filling criterion for a design, e.g. a metric that underlines how points fill the uniform space."
+
+%enddef
+%feature("docstring") OTLHS::SpaceFillingImplementation
+OTLHS_SpaceFilling_doc
+// ---------------------------------------------------------------------
+%define OTLHS_SpaceFilling_evaluate_doc
+"Compute the criterion for a specific design
+
+Parameters
+----------
+design:  :class:`~openturns.NumericalSample` or 2d array like
+    The design
+
+Returns
+-------
+value:  float
+    The computed criterion"
+%enddef
+%feature("docstring") OTLHS::SpaceFillingImplementation::evaluate
+OTLHS_SpaceFilling_evaluate_doc
+// ---------------------------------------------------------------------
+%define OTLHS_SpaceFilling_perturb_lhs_doc
+"Intentionaly not documented
+Do not use"
+%enddef
+%feature("docstring") OTLHS::SpaceFillingImplementation::perturbLHS
+OTLHS_SpaceFilling_perturb_lhs_doc
+// ---------------------------------------------------------------------
