@@ -31,7 +31,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(PlotDesign);
 
-static Factory<PlotDesign> RegisteredFactory("PlotDesign");
+static Factory<PlotDesign> RegisteredFactory;
 
 
 PlotDesign::PlotDesign(const NumericalSample & data, const Interval & bounds,

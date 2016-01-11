@@ -37,7 +37,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(SimulatedAnnealingLHS);
 
-static Factory<SimulatedAnnealingLHS> RegisteredFactory("SimulatedAnnealingLHS");
+static Factory<SimulatedAnnealingLHS> RegisteredFactory;
 
 
 /** Geometric temperature profil */

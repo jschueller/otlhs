@@ -38,7 +38,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(LHSDesign);
 
-static Factory<LHSDesign> RegisteredFactory("LHSDesign");
+static Factory<LHSDesign> RegisteredFactory;
 
 LHSDesign::LHSDesign()
   : PersistentObject()

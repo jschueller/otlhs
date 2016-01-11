@@ -34,7 +34,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(MonteCarloLHS);
 
-static Factory<MonteCarloLHS> RegisteredFactory("MonteCarloLHS");
+static Factory<MonteCarloLHS> RegisteredFactory;
 
 /* Default constructor */
 MonteCarloLHS::MonteCarloLHS(const LHSDesign & lhs, const UnsignedInteger N, const SpaceFilling & spaceFilling)
