@@ -30,7 +30,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(LinearProfile);
 
-static Factory<LinearProfile> RegisteredFactory("LinearProfile");
+static Factory<LinearProfile> RegisteredFactory;
 
 
 /* Default constructor */

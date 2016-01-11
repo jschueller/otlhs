@@ -32,7 +32,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(SpaceFillingPhiP);
 
-static Factory<SpaceFillingPhiP> RegisteredFactory("SpaceFillingPhiP");
+static Factory<SpaceFillingPhiP> RegisteredFactory;
 
 
 /* Default constructor */
