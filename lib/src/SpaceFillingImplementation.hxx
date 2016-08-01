@@ -23,9 +23,9 @@
 #ifndef OTLHS_SPACEFILLINGIMPLEMENTATION_HXX
 #define OTLHS_SPACEFILLINGIMPLEMENTATION_HXX
 
-#include "PersistentObject.hxx"
-#include "StorageManager.hxx"
-#include "NumericalSample.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "openturns/StorageManager.hxx"
+#include "openturns/NumericalSample.hxx"
 #include "OTLHSprivate.hxx"
 
 namespace OTLHS

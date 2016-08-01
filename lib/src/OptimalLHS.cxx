@@ -21,7 +21,7 @@
  *
  */
 #include "OptimalLHS.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 #include "OptimalLHSImplementation.hxx"
 #include "SimulatedAnnealingLHS.hxx"
 #include "GeometricProfile.hxx"

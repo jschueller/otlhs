@@ -21,7 +21,7 @@
  *
  */
 #include "SpaceFillingMinDist.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 
 #include <limits>
 #include <cmath>

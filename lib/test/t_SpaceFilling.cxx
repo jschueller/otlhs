@@ -1,6 +1,6 @@
 #include <iostream>
 // OT includes
-#include <OT.hxx>
+#include <openturns/OT.hxx>
 #include "SpaceFillingC2.hxx"
 #include "SpaceFillingMinDist.hxx"
 #include "SpaceFillingPhiP.hxx"

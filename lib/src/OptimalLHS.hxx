@@ -23,7 +23,7 @@
 #ifndef OTLHS_OPTIMALLHS_HXX
 #define OTLHS_OPTIMALLHS_HXX
 
-#include "TypedInterfaceObject.hxx"
+#include "openturns/TypedInterfaceObject.hxx"
 #include "OptimalLHSImplementation.hxx"
 
 namespace OTLHS

@@ -23,7 +23,7 @@
 #ifndef OTLHS_OPTIMALTEMPERATUREPROFILE_HXX
 #define OTLHS_OPTIMALTEMPERATUREPROFILE_HXX
 
-#include "TypedInterfaceObject.hxx"
+#include "openturns/TypedInterfaceObject.hxx"
 #include "TemperatureProfileImplementation.hxx"
 
 namespace OTLHS

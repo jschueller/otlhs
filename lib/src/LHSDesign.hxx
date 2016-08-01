@@ -23,10 +23,10 @@
 #ifndef OTLHS_LHSDESIGN_HXX
 #define OTLHS_LHSDESIGN_HXX
 
-#include "StorageManager.hxx"
-#include "Interval.hxx"
+#include "openturns/StorageManager.hxx"
+#include "openturns/Interval.hxx"
 #include "OTLHSprivate.hxx"
-#include "NumericalSample.hxx"
+#include "openturns/NumericalSample.hxx"
 
 namespace OTLHS
 {

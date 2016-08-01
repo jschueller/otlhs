@@ -23,8 +23,8 @@
 #ifndef OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX
 #define OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX
 
-#include "PersistentObject.hxx"
-#include "StorageManager.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "openturns/StorageManager.hxx"
 #include "OTLHSprivate.hxx"
 
 namespace OTLHS

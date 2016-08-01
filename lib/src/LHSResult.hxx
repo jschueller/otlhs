@@ -23,15 +23,15 @@
 #ifndef OTLHS_LHSRESULT_HXX
 #define OTLHS_LHSRESULT_HXX
 
-#include "PersistentObject.hxx"
-#include "StorageManager.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "openturns/StorageManager.hxx"
 #include "OTLHSprivate.hxx"
 #include "SpaceFilling.hxx"
 #include "LHSResult.hxx"
-#include "PersistentCollection.hxx"
-#include "NumericalSample.hxx"
-#include "Interval.hxx"
-#include "Graph.hxx"
+#include "openturns/PersistentCollection.hxx"
+#include "openturns/NumericalSample.hxx"
+#include "openturns/Interval.hxx"
+#include "openturns/Graph.hxx"
 
 namespace OTLHS
 {

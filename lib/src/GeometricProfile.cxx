@@ -21,7 +21,7 @@
  *
  */
 #include "GeometricProfile.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 
 #include <cmath>
 

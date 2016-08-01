@@ -23,9 +23,8 @@
 #ifndef OTLHS_SPACEFILLING_HXX
 #define OTLHS_SPACEFILLING_HXX
 
-#include "TypedInterfaceObject.hxx"
-#include "StorageManager.hxx"
-#include "Pointer.hxx"
+#include "openturns/TypedInterfaceObject.hxx"
+#include "openturns/StorageManager.hxx"
 #include "SpaceFillingImplementation.hxx"
 
 namespace OTLHS

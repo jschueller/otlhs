@@ -20,15 +20,14 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 #include "SimulatedAnnealingLHS.hxx"
-#include "RandomGenerator.hxx"
-#include "Log.hxx"
-#include "Collection.hxx"
+#include "openturns/RandomGenerator.hxx"
+#include "openturns/Log.hxx"
 #include "SpaceFillingC2.hxx"
 #include "SpaceFillingPhiP.hxx"
 #include "SpaceFillingMinDist.hxx"
-#include "KPermutationsDistribution.hxx"
+#include "openturns/KPermutationsDistribution.hxx"
 
 using namespace OT;
 

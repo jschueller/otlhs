@@ -21,7 +21,7 @@
  *
  */
 #include "OptimalLHSImplementation.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 #include "LHSDesign.hxx"
 
 using namespace OT;

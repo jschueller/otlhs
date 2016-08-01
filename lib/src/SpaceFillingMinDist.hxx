@@ -23,7 +23,7 @@
 #ifndef OTLHS_SPACEFILLINGMINDIST_HXX
 #define OTLHS_SPACEFILLINGMINDIST_HXX
 
-#include "PersistentObject.hxx"
+#include "openturns/PersistentObject.hxx"
 #include "SpaceFillingImplementation.hxx"
 
 namespace OTLHS

@@ -21,7 +21,7 @@
  *
  */
 #include "TemperatureProfile.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 #include "TemperatureProfileImplementation.hxx"
 #include "GeometricProfile.hxx"
 

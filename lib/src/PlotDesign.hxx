@@ -24,9 +24,9 @@
 #ifndef OTLHS_OPTIMALPLOTDESIGN_HXX
 #define OTLHS_OPTIMALPLOTDESIGN_HXX
 
-#include "DrawableImplementation.hxx"
-#include "NumericalSample.hxx"
-#include "Interval.hxx"
+#include "openturns/DrawableImplementation.hxx"
+#include "openturns/NumericalSample.hxx"
+#include "openturns/Interval.hxx"
 #include "LHSResult.hxx"
 
 namespace OTLHS

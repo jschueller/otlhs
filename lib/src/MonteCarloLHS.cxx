@@ -21,7 +21,7 @@
  *
  */
 #include "MonteCarloLHS.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 #include "SpaceFillingC2.hxx"
 #include "SpaceFillingPhiP.hxx"
 #include "SpaceFillingMinDist.hxx"

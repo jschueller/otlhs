@@ -23,8 +23,8 @@
 #ifndef OTLHS_OPTIMALLHSIMPLEMENTATION_HXX
 #define OTLHS_OPTIMALLHSIMPLEMENTATION_HXX
 
-#include "PersistentObject.hxx"
-#include "StorageManager.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "openturns/StorageManager.hxx"
 #include "OTLHSprivate.hxx"
 #include "LHSDesign.hxx"
 #include "SpaceFilling.hxx"

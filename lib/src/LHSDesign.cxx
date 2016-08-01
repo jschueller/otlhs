@@ -21,13 +21,11 @@
  *
  */
 #include "LHSDesign.hxx"
-#include "PersistentObjectFactory.hxx"
-#include "Distribution.hxx"
-#include "Collection.hxx"
-#include "ComposedDistribution.hxx"
-#include "Uniform.hxx"
-#include "KPermutationsDistribution.hxx"
-#include "RandomGenerator.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
+#include "openturns/ComposedDistribution.hxx"
+#include "openturns/Uniform.hxx"
+#include "openturns/KPermutationsDistribution.hxx"
+#include "openturns/RandomGenerator.hxx"
 
 #include <cmath>
 

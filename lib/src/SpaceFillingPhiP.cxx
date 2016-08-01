@@ -21,7 +21,7 @@
  *
  */
 #include "SpaceFillingPhiP.hxx"
-#include "PersistentObjectFactory.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
 
 #include <limits>
 

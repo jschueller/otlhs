@@ -23,8 +23,8 @@
 #ifndef OTLHS_MONTECARLOLHS_HXX
 #define OTLHS_MONTECARLOLHS_HXX
 
-#include "PersistentObject.hxx"
-#include "StorageManager.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "openturns/StorageManager.hxx"
 #include "SpaceFilling.hxx"
 #include "OptimalLHSImplementation.hxx"
 #include "LHSDesign.hxx"

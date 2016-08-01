@@ -21,9 +21,9 @@
  *
  */
 #include "LHSResult.hxx"
-#include "PersistentObjectFactory.hxx"
-#include "Curve.hxx"
-#include "Cloud.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
+#include "openturns/Curve.hxx"
+#include "openturns/Cloud.hxx"
 
 #include <limits>
 

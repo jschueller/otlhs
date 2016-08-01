@@ -21,8 +21,8 @@
  *
  */
 #include "SpaceFillingImplementation.hxx"
-#include "PersistentObjectFactory.hxx"
-#include "Log.hxx"
+#include "openturns/PersistentObjectFactory.hxx"
+#include "openturns/Log.hxx"
 
 using namespace OT;
 

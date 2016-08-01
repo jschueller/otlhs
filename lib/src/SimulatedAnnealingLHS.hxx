@@ -28,7 +28,6 @@
 #include "SpaceFilling.hxx"
 #include "SpaceFillingMinDist.hxx"
 #include "OptimalLHSImplementation.hxx"
-#include "Collection.hxx"
 
 namespace OTLHS
 {
