@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  OTLHS.hxx
  *  @brief Header file which includes all OTLHS header files
  *
  *  Copyright (C) 2014 EDF

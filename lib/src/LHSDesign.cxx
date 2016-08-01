@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  LHSDesign.cxx
  *  @brief LHSDesign
  *
  *  Copyright (C) 2014 EDF

@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  OptimalLHS.cxx
  *  @brief Interface class for algorithms generating optimized LHS
  *
  *  Copyright (C) 2014 EDF

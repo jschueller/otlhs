@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  TemperatureProfile.cxx
  *  @brief Interface class for temperature profiles
  *
  *  Copyright (C) 2014 EDF

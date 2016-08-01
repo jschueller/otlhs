@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  SpaceFilling.cxx
  *  @brief Base class for space filling criteria
  *
  *  Copyright (C) 2014 EDF

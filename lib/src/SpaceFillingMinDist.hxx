@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  SpaceFillingMinDist.hxx
  *  @brief SpaceFillingMinDist
  *
  *  Copyright (C) 2014 EDF

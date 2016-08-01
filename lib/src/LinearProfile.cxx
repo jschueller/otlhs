@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  LinearProfile.cxx
  *  @brief LinearProfile
  *
  *  Copyright (C) 2014 EDF

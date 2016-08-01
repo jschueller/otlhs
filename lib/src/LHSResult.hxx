@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  LHSResult.hxx
  *  @brief LHSResult
  *
  *  Copyright (C) 2014 EDF

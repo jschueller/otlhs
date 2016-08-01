@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  TemperatureProfileImplementation.hxx
  *  @brief TemperatureProfileImplementation
  *
  *  Copyright (C) 2014 EDF

@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  OptimalLHSImplementation.cxx
  *  @brief Abstract class for algorithms generating optimized LHS
  *
  *  Copyright (C) 2014 EDF

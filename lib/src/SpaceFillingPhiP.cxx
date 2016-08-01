@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  SpaceFillingPhiP.cxx
  *  @brief SpaceFillingPhiP
  *
  *  Copyright (C) 2014 EDF

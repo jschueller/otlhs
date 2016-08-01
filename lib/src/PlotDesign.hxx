@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  PlotDesign.hxx
  *  @brief PlotDesign
  *
  *  Copyright (C) 2014 EDF

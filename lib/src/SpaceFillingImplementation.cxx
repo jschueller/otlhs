@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  SpaceFillingImplementation.cxx
  *  @brief Abstract top-level class for all space filling criteria implementations
  *
  *  Copyright (C) 2014 EDF

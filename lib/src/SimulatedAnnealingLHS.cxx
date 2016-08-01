@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  SimulatedAnnealingLHS.cxx
  *  @brief SimulatedAnnealingLHS
  *
  *  Copyright (C) 2014 EDF

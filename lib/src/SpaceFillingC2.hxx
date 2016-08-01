@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  SpaceFillingC2.hxx
  *  @brief Space filling criterion based on centered L2-discrepancy
  *
  *  Copyright (C) 2014 EDF

@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  MonteCarloLHS.cxx
  *  @brief MonteCarloLHS
  *
  *  Copyright (C) 2014 EDF

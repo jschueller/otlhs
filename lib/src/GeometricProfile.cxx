@@ -1,6 +1,5 @@
 //                                               -*- C++ -*-
 /**
- *  @file  GeometricProfile.cxx
  *  @brief GeometricProfile
  *
  *  Copyright (C) 2014 EDF
