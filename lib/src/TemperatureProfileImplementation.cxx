@@ -30,7 +30,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(TemperatureProfileImplementation);
 
-static Factory<TemperatureProfileImplementation> RegisteredFactory;
+static const Factory<TemperatureProfileImplementation> Factory_TemperatureProfileImplementation;
 
 
 /* Default constructor */

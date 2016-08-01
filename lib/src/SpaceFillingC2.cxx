@@ -30,7 +30,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(SpaceFillingC2);
 
-static Factory<SpaceFillingC2> RegisteredFactory;
+static const Factory<SpaceFillingC2> Factory_SpaceFillingC2;
 
 
 /* Default constructor */

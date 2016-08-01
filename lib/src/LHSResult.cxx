@@ -33,7 +33,7 @@ using namespace OT;
 namespace OTLHS
 {
 
-static Factory<LHSResult> RegisteredFactory;
+static const Factory<LHSResult> Factory_LHSResult;
 
 CLASSNAMEINIT(LHSResult);
 

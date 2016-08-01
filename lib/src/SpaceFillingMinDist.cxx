@@ -33,7 +33,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(SpaceFillingMinDist);
 
-static Factory<SpaceFillingMinDist> RegisteredFactory;
+static const Factory<SpaceFillingMinDist> Factory_SpaceFillingMinDist;
 
 
 /* Default constructor */

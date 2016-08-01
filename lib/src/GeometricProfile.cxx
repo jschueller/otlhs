@@ -32,7 +32,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(GeometricProfile);
 
-static Factory<GeometricProfile> RegisteredFactory;
+static const Factory<GeometricProfile> Factory_GeometricProfile;
 
 
 /* Default constructor */

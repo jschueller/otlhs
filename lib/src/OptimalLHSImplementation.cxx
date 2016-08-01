@@ -31,7 +31,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(OptimalLHSImplementation);
 
-static Factory<OptimalLHSImplementation> RegisteredFactory;
+static const Factory<OptimalLHSImplementation> Factory_OptimalLHSImplementation;
 
 
 /* Default constructor */

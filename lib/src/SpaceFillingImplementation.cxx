@@ -31,7 +31,7 @@ namespace OTLHS
 
 CLASSNAMEINIT(SpaceFillingImplementation);
 
-static Factory<SpaceFillingImplementation> RegisteredFactory;
+static const Factory<SpaceFillingImplementation> Factory_SpaceFillingImplementation;
 
 
 /* Default constructor */
