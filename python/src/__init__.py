@@ -15,5 +15,5 @@ if sys.platform.startswith('win'):
 
 from .otlhs import *
 
-__version__ = '1.2'
+__version__ = '1.3'
 
