@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "SpaceFillingImplementation.hxx"
+#include "otlhs/SpaceFillingImplementation.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 #include "openturns/Log.hxx"
 

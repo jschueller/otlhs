@@ -25,7 +25,7 @@
 #include "openturns/DrawableImplementation.hxx"
 #include "openturns/NumericalSample.hxx"
 #include "openturns/Interval.hxx"
-#include "LHSResult.hxx"
+#include "otlhs/LHSResult.hxx"
 
 namespace OTLHS
 {

@@ -1,10 +1,10 @@
 // SWIG file
 
 %{
-#include "GeometricProfile.hxx"
+#include "otlhs/GeometricProfile.hxx"
 %}
 
 %include GeometricProfile_doc.i
 
-%include GeometricProfile.hxx
+%include otlhs/GeometricProfile.hxx
 namespace OTLHS { %extend GeometricProfile { GeometricProfile(const GeometricProfile & other) { return new OTLHS::GeometricProfile(other); } } }

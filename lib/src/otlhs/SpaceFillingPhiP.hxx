@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief LinearProfile
+ *  @brief SpaceFillingPhiP
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,33 +18,34 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_OPTIMALLINEARPROFILE_HXX
-#define OTLHS_OPTIMALLINEARPROFILE_HXX
+#ifndef OTLHS_SPACEFILLINGPHIP_HXX
+#define OTLHS_SPACEFILLINGPHIP_HXX
 
-#include "TemperatureProfileImplementation.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "otlhs/SpaceFillingImplementation.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class LinearProfile
+ * @class SpaceFillingPhiP
  *
- * LinearProfile is a linear temperature profile for SimulatedAnnealing
+ * This class computes centered L2-discrepancy of samples.
  */
-class OTLHS_API LinearProfile
-  : public TemperatureProfileImplementation
+class OTLHS_API SpaceFillingPhiP
+  : public SpaceFillingImplementation
 {
   CLASSNAME;
 
 public:
   /** Default constructor */
-  LinearProfile(const OT::NumericalScalar T0=10.0, const OT::UnsignedInteger iMax=2000);
+  explicit SpaceFillingPhiP(OT::UnsignedInteger p = 50);
 
   /** Virtual constructor method */
-  LinearProfile * clone() const;
+  SpaceFillingPhiP * clone() const;
 
-  /** Compute temperature T(i) */
-  OT::NumericalScalar operator()(OT::UnsignedInteger i) const;
+  /** Evaluate criterion on a sample */
+  OT::NumericalScalar evaluate(const OT::NumericalSample& sample) const;
 
   /** String converter */
   OT::String __repr__() const;
@@ -55,12 +56,15 @@ public:
   /** Method load() reloads the object from the StorageManager */
   void load(OT::Advocate & adv);
 
-private:
-  mutable OT::NumericalScalar iMaxInv_;
+  /** Compute criterion when performing an elementary perturbation */
+  OT::NumericalScalar perturbLHS(OT::NumericalSample& oldDesign, OT::NumericalScalar oldCriterion,
+      OT::UnsignedInteger row1, OT::UnsignedInteger row2, OT::UnsignedInteger column) const;
 
-  friend class OT::Factory<LinearProfile>;
-}; /* class LinearProfile */
+private:
+  OT::UnsignedInteger p_;
+
+}; /* class SpaceFillingPhiP */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_OPTIMALLINEARPROFILE_HXX */
+#endif /* OTLHS_SPACEFILLINGPHIP_HXX */

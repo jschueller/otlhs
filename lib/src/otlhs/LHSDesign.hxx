@@ -23,7 +23,7 @@
 
 #include "openturns/StorageManager.hxx"
 #include "openturns/Interval.hxx"
-#include "OTLHSprivate.hxx"
+#include "otlhs/OTLHSprivate.hxx"
 #include "openturns/NumericalSample.hxx"
 
 namespace OTLHS

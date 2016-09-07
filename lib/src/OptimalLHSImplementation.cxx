@@ -18,9 +18,9 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "OptimalLHSImplementation.hxx"
+#include "otlhs/OptimalLHSImplementation.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
-#include "LHSDesign.hxx"
+#include "otlhs/LHSDesign.hxx"
 
 using namespace OT;
 

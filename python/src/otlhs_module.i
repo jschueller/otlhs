@@ -21,7 +21,7 @@
 %import uncertainty_module.i
 
 // The new classes
-%include OTLHSprivate.hxx
+%include otlhs/OTLHSprivate.hxx
 %include LHSDesign.i
 %include LHSResult.i
 %include PlotDesign.i

@@ -18,11 +18,11 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "MonteCarloLHS.hxx"
+#include "otlhs/MonteCarloLHS.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
-#include "SpaceFillingC2.hxx"
-#include "SpaceFillingPhiP.hxx"
-#include "SpaceFillingMinDist.hxx"
+#include "otlhs/SpaceFillingC2.hxx"
+#include "otlhs/SpaceFillingPhiP.hxx"
+#include "otlhs/SpaceFillingMinDist.hxx"
 #include <limits>
 
 using namespace OT;

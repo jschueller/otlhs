@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief Space filling criterion based on centered L2-discrepancy
+ *  @brief SpaceFillingMinDist
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,45 +18,40 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_SPACEFILLINGC2_HXX
-#define OTLHS_SPACEFILLINGC2_HXX
+#ifndef OTLHS_SPACEFILLINGMINDIST_HXX
+#define OTLHS_SPACEFILLINGMINDIST_HXX
 
-#include "SpaceFillingImplementation.hxx"
+#include "openturns/PersistentObject.hxx"
+#include "otlhs/SpaceFillingImplementation.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class SpaceFillingC2
+ * @class SpaceFillingMinDist
  *
- * This class computes centered L2-discrepancy of samples.
+ * This class computes minimal distance between sample points.
  */
-class OTLHS_API SpaceFillingC2
+class OTLHS_API SpaceFillingMinDist
   : public SpaceFillingImplementation
 {
   CLASSNAME;
 
 public:
   /** Default constructor */
-  SpaceFillingC2();
+  SpaceFillingMinDist();
 
   /** Virtual constructor method */
-  SpaceFillingC2 * clone() const;
-
-  /** Evaluate criterion on a sample */
-  OT::NumericalScalar evaluate(const OT::NumericalSample& sample) const;
+  SpaceFillingMinDist * clone() const;
 
   /** String converter */
   OT::String __repr__() const;
 
-  /** Compute criterion when performing an elementary perturbation */
-  OT::NumericalScalar perturbLHS(OT::NumericalSample& oldDesign, OT::NumericalScalar oldCriterion,
-      OT::UnsignedInteger row1, OT::UnsignedInteger row2, OT::UnsignedInteger column) const;
+  /** Evaluate criterion on a sample */
+  OT::NumericalScalar evaluate(const OT::NumericalSample& sample) const;
 
-private:
-
-}; /* class SpaceFillingC2 */
+}; /* class SpaceFillingMinDist */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_SPACEFILLINGC2_HXX */
+#endif /* OTLHS_SPACEFILLINGMINDIST_HXX */

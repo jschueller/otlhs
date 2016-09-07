@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "SpaceFillingC2.hxx"
+#include "otlhs/SpaceFillingC2.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 using namespace OT;

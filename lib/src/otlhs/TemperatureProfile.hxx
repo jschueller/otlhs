@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief Interface class for algorithms generating optimized LHS
+ *  @brief Interface class for temperature profiles
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,63 +18,59 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_OPTIMALLHS_HXX
-#define OTLHS_OPTIMALLHS_HXX
+#ifndef OTLHS_OPTIMALTEMPERATUREPROFILE_HXX
+#define OTLHS_OPTIMALTEMPERATUREPROFILE_HXX
 
 #include "openturns/TypedInterfaceObject.hxx"
-#include "OptimalLHSImplementation.hxx"
+#include "otlhs/TemperatureProfileImplementation.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class OptimalLHS
+ * @class TemperatureProfile
  *
- * OptimalLHS is some optimallhs type to illustrate how to add some classes in Open TURNS
+ * TemperatureProfile is the interface class for temperature profile computation for SimulatedAnnealing
  */
-class OTLHS_API OptimalLHS
-  : public OT::TypedInterfaceObject<OptimalLHSImplementation>
+class OTLHS_API TemperatureProfile
+  : public OT::TypedInterfaceObject<TemperatureProfileImplementation>
 {
   CLASSNAME;
 
 public:
 
-  typedef OT::Pointer<OptimalLHSImplementation>  Implementation;
+  typedef OT::Pointer<TemperatureProfileImplementation>  Implementation;
 
   /** Default constructor */
-  OptimalLHS(const LHSDesign & lhs);
-
-  /** Constructor with SpaceFilling argument */
-  OptimalLHS(const LHSDesign & lhs, const SpaceFilling & spaceFilling);
+  TemperatureProfile();
 
   /** Copy constructor */
-  OptimalLHS(const OptimalLHSImplementation & implementation);
+  TemperatureProfile(const TemperatureProfileImplementation & implementation);
 
   /** Constructor from implementation */
-  OptimalLHS(const Implementation & p_implementation);
+  TemperatureProfile(const Implementation & p_implementation);
 
 #ifndef SWIG
   /** Constructor from implementation pointer */
-  OptimalLHS(OptimalLHSImplementation * p_implementation);
+  TemperatureProfile(TemperatureProfileImplementation * p_implementation);
 #endif
 
+  /** Compute temperature */
+  OT::NumericalScalar operator()(OT::UnsignedInteger i) const;
 
-  /** LHSDesign accessor */
-  LHSDesign getLHS() const;
+  /** get T0 */
+  OT::NumericalScalar getT0() const;
 
-  /** SpaceFilling accessor */
-  SpaceFilling getSpaceFilling() const;
-
-  /** The main method is generating a design */
-  LHSResult generate() const;
+  /** get iMax */
+  OT::UnsignedInteger getIMax() const;
 
   /** String converter */
   OT::String __repr__() const;
 
 private:
 
-}; /* class OptimalLHS */
+}; /* class TemperatureProfile */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_OPTIMALLHS_HXX */
+#endif /* OTLHS_OPTIMALTEMPERATUREPROFILE_HXX */

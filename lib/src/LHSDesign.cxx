@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "LHSDesign.hxx"
+#include "otlhs/LHSDesign.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 #include "openturns/ComposedDistribution.hxx"
 #include "openturns/Uniform.hxx"

@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "SpaceFillingMinDist.hxx"
+#include "otlhs/SpaceFillingMinDist.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 #include <limits>
