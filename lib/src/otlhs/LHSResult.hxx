@@ -23,9 +23,9 @@
 
 #include "openturns/PersistentObject.hxx"
 #include "openturns/StorageManager.hxx"
-#include "OTLHSprivate.hxx"
-#include "SpaceFilling.hxx"
-#include "LHSResult.hxx"
+#include "otlhs/OTLHSprivate.hxx"
+#include "otlhs/SpaceFilling.hxx"
+#include "otlhs/LHSResult.hxx"
 #include "openturns/PersistentCollection.hxx"
 #include "openturns/NumericalSample.hxx"
 #include "openturns/Interval.hxx"

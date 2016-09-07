@@ -21,11 +21,11 @@
 #ifndef OTLHS_SIMULATEDANNEALINGLHS_HXX
 #define OTLHS_SIMULATEDANNEALINGLHS_HXX
 
-#include "TemperatureProfile.hxx"
-#include "GeometricProfile.hxx"
-#include "SpaceFilling.hxx"
-#include "SpaceFillingMinDist.hxx"
-#include "OptimalLHSImplementation.hxx"
+#include "otlhs/TemperatureProfile.hxx"
+#include "otlhs/GeometricProfile.hxx"
+#include "otlhs/SpaceFilling.hxx"
+#include "otlhs/SpaceFillingMinDist.hxx"
+#include "otlhs/OptimalLHSImplementation.hxx"
 
 namespace OTLHS
 {

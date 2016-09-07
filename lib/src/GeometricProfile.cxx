@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "GeometricProfile.hxx"
+#include "otlhs/GeometricProfile.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 #include <cmath>

@@ -18,10 +18,10 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "SpaceFilling.hxx"
+#include "otlhs/SpaceFilling.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
-#include "SpaceFillingImplementation.hxx"
-#include "SpaceFillingPhiP.hxx"
+#include "otlhs/SpaceFillingImplementation.hxx"
+#include "otlhs/SpaceFillingPhiP.hxx"
 
 using namespace OT;
 

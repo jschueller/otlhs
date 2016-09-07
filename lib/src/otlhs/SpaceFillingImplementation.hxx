@@ -24,7 +24,7 @@
 #include "openturns/PersistentObject.hxx"
 #include "openturns/StorageManager.hxx"
 #include "openturns/NumericalSample.hxx"
-#include "OTLHSprivate.hxx"
+#include "otlhs/OTLHSprivate.hxx"
 
 namespace OTLHS
 {

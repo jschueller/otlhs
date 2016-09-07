@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief MonteCarloLHS
+ *  @brief LinearProfile
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,55 +18,49 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_MONTECARLOLHS_HXX
-#define OTLHS_MONTECARLOLHS_HXX
+#ifndef OTLHS_OPTIMALLINEARPROFILE_HXX
+#define OTLHS_OPTIMALLINEARPROFILE_HXX
 
-#include "openturns/PersistentObject.hxx"
-#include "openturns/StorageManager.hxx"
-#include "SpaceFilling.hxx"
-#include "OptimalLHSImplementation.hxx"
-#include "LHSDesign.hxx"
-#include "SpaceFillingMinDist.hxx"
+#include "otlhs/TemperatureProfileImplementation.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class MonteCarloLHS
+ * @class LinearProfile
  *
- * MonteCarloLHS is the algorithm used for LHS optimisation (Random Brute Force)
+ * LinearProfile is a linear temperature profile for SimulatedAnnealing
  */
-class OTLHS_API MonteCarloLHS
-  : public OptimalLHSImplementation
+class OTLHS_API LinearProfile
+  : public TemperatureProfileImplementation
 {
   CLASSNAME;
 
 public:
-
   /** Default constructor */
-  MonteCarloLHS(const LHSDesign & lhs, const OT::UnsignedInteger N, const SpaceFilling & spaceFilling = SpaceFillingMinDist());
+  LinearProfile(const OT::NumericalScalar T0=10.0, const OT::UnsignedInteger iMax=2000);
 
   /** Virtual constructor method */
-  MonteCarloLHS * clone() const;
+  LinearProfile * clone() const;
 
-  /** Compute next design method **/
-  LHSResult generate() const;
+  /** Compute temperature T(i) */
+  OT::NumericalScalar operator()(OT::UnsignedInteger i) const;
 
   /** String converter */
   OT::String __repr__() const;
 
   /** Method save() stores the object through the StorageManager */
-  virtual void save(OT::Advocate & adv) const;
+  void save(OT::Advocate & adv) const;
 
   /** Method load() reloads the object from the StorageManager */
-  virtual void load(OT::Advocate & adv);
+  void load(OT::Advocate & adv);
 
 private:
-   OT::UnsignedInteger N_;
-   MonteCarloLHS() {};
-   friend class OT::Factory<MonteCarloLHS>;
-}; /* class MonteCarloLHS */
+  mutable OT::NumericalScalar iMaxInv_;
+
+  friend class OT::Factory<LinearProfile>;
+}; /* class LinearProfile */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_MONTECARLOLHS_HXX */
+#endif /* OTLHS_OPTIMALLINEARPROFILE_HXX */

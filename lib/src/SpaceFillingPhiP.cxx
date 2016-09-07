@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "SpaceFillingPhiP.hxx"
+#include "otlhs/SpaceFillingPhiP.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 #include <limits>

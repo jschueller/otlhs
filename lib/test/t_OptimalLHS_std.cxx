@@ -1,7 +1,7 @@
 #include <iostream>
 // OT includes
 #include <OT.hxx>
-#include "OTLHS.hxx"
+#include "otlhs/OTLHS.hxx"
 
 using namespace OT;
 

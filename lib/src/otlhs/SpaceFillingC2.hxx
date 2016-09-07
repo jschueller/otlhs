@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief Base class for space filling criteria
+ *  @brief Space filling criterion based on centered L2-discrepancy
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,54 +18,33 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_SPACEFILLING_HXX
-#define OTLHS_SPACEFILLING_HXX
+#ifndef OTLHS_SPACEFILLINGC2_HXX
+#define OTLHS_SPACEFILLINGC2_HXX
 
-#include "openturns/TypedInterfaceObject.hxx"
-#include "openturns/StorageManager.hxx"
-#include "SpaceFillingImplementation.hxx"
+#include "otlhs/SpaceFillingImplementation.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class SpaceFilling
+ * @class SpaceFillingC2
  *
- * SpaceFilling is some optimallhs type to illustrate how to add some classes in Open TURNS
+ * This class computes centered L2-discrepancy of samples.
  */
-class OTLHS_API SpaceFilling
-  : public OT::TypedInterfaceObject<SpaceFillingImplementation>
+class OTLHS_API SpaceFillingC2
+  : public SpaceFillingImplementation
 {
   CLASSNAME;
 
-  /* Allow OptimalLHS derived classes to call perturb method */
-  friend class OptimalLHS;
-  friend class SimulatedAnnealingLHS;
-
 public:
-
-  typedef OT::Pointer<SpaceFillingImplementation>  Implementation;
-
   /** Default constructor */
-  SpaceFilling();
+  SpaceFillingC2();
 
-  /** Copy constructor */
-  SpaceFilling(const SpaceFillingImplementation & implementation);
-
-  /** Constructor from implementation */
-  SpaceFilling(const Implementation & p_implementation);
-
-#ifndef SWIG
-  /** Constructor from implementation pointer */
-  SpaceFilling(SpaceFillingImplementation * p_implementation);
-#endif
-
+  /** Virtual constructor method */
+  SpaceFillingC2 * clone() const;
 
   /** Evaluate criterion on a sample */
-  OT::NumericalScalar evaluate(const OT::NumericalSample & sample) const;
-
-  /** Accessor */
-  OT::Bool isMinimizationProblem() const;
+  OT::NumericalScalar evaluate(const OT::NumericalSample& sample) const;
 
   /** String converter */
   OT::String __repr__() const;
@@ -74,8 +53,10 @@ public:
   OT::NumericalScalar perturbLHS(OT::NumericalSample& oldDesign, OT::NumericalScalar oldCriterion,
       OT::UnsignedInteger row1, OT::UnsignedInteger row2, OT::UnsignedInteger column) const;
 
-}; /* class SpaceFilling */
+private:
+
+}; /* class SpaceFillingC2 */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_SPACEFILLING_HXX */
+#endif /* OTLHS_SPACEFILLINGC2_HXX */

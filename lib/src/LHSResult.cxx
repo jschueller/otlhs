@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "LHSResult.hxx"
+#include "otlhs/LHSResult.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 #include "openturns/Curve.hxx"
 #include "openturns/Cloud.hxx"

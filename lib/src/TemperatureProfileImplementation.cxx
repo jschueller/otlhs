@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "TemperatureProfileImplementation.hxx"
+#include "otlhs/TemperatureProfileImplementation.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 using namespace OT;

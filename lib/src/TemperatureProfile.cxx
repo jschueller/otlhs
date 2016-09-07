@@ -18,10 +18,10 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "TemperatureProfile.hxx"
+#include "otlhs/TemperatureProfile.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
-#include "TemperatureProfileImplementation.hxx"
-#include "GeometricProfile.hxx"
+#include "otlhs/TemperatureProfileImplementation.hxx"
+#include "otlhs/GeometricProfile.hxx"
 
 using namespace OT;
 

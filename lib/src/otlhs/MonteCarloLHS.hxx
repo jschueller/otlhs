@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief TemperatureProfileImplementation
+ *  @brief MonteCarloLHS
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,48 +18,42 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX
-#define OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX
+#ifndef OTLHS_MONTECARLOLHS_HXX
+#define OTLHS_MONTECARLOLHS_HXX
 
 #include "openturns/PersistentObject.hxx"
 #include "openturns/StorageManager.hxx"
-#include "OTLHSprivate.hxx"
+#include "otlhs/SpaceFilling.hxx"
+#include "otlhs/OptimalLHSImplementation.hxx"
+#include "otlhs/LHSDesign.hxx"
+#include "otlhs/SpaceFillingMinDist.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class TemperatureProfileImplementation
+ * @class MonteCarloLHS
  *
- * TemperatureProfileImplementation is a generic temperature profile for SimulatedAnnealing
+ * MonteCarloLHS is the algorithm used for LHS optimisation (Random Brute Force)
  */
-class OTLHS_API TemperatureProfileImplementation
-  : public OT::PersistentObject
+class OTLHS_API MonteCarloLHS
+  : public OptimalLHSImplementation
 {
   CLASSNAME;
 
 public:
-  /** Default constructor */
-  TemperatureProfileImplementation();
 
-  /** Constructor with temperature T0 & iMax*/
-  TemperatureProfileImplementation(const OT::NumericalScalar T0,
-                              const OT::UnsignedInteger iMax);
+  /** Default constructor */
+  MonteCarloLHS(const LHSDesign & lhs, const OT::UnsignedInteger N, const SpaceFilling & spaceFilling = SpaceFillingMinDist());
 
   /** Virtual constructor method */
-  TemperatureProfileImplementation * clone() const;
+  MonteCarloLHS * clone() const;
 
-  /** Compute temperature T(i) */
-  virtual OT::NumericalScalar operator()(OT::UnsignedInteger i) const;
+  /** Compute next design method **/
+  LHSResult generate() const;
 
-  /** get T0 */
-  virtual OT::NumericalScalar getT0() const;
-
-  /** get iMax */
-  virtual OT::UnsignedInteger getIMax() const;
-  
   /** String converter */
-  virtual OT::String __repr__() const;
+  OT::String __repr__() const;
 
   /** Method save() stores the object through the StorageManager */
   virtual void save(OT::Advocate & adv) const;
@@ -67,12 +61,12 @@ public:
   /** Method load() reloads the object from the StorageManager */
   virtual void load(OT::Advocate & adv);
 
-protected:
-    OT::NumericalScalar T0_;
-    OT::UnsignedInteger iMax_;
-
-}; /* class TemperatureProfileImplementation */
+private:
+   OT::UnsignedInteger N_;
+   MonteCarloLHS() {};
+   friend class OT::Factory<MonteCarloLHS>;
+}; /* class MonteCarloLHS */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX */
+#endif /* OTLHS_MONTECARLOLHS_HXX */

@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief Abstract class for algorithms generating optimized LHS
+ *  @brief TemperatureProfileImplementation
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,50 +18,46 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_OPTIMALLHSIMPLEMENTATION_HXX
-#define OTLHS_OPTIMALLHSIMPLEMENTATION_HXX
+#ifndef OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX
+#define OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX
 
 #include "openturns/PersistentObject.hxx"
 #include "openturns/StorageManager.hxx"
-#include "OTLHSprivate.hxx"
-#include "LHSDesign.hxx"
-#include "SpaceFilling.hxx"
-#include "LHSResult.hxx"
+#include "otlhs/OTLHSprivate.hxx"
 
 namespace OTLHS
 {
 
-class LHSDesign;
-
 /**
- * @class OptimalLHSImplementation
+ * @class TemperatureProfileImplementation
  *
- * OptimalLHSImplementation is some optimallhs type to illustrate how to add some classes in OpenTURNS
+ * TemperatureProfileImplementation is a generic temperature profile for SimulatedAnnealing
  */
-class OTLHS_API OptimalLHSImplementation
+class OTLHS_API TemperatureProfileImplementation
   : public OT::PersistentObject
 {
   CLASSNAME;
 
 public:
   /** Default constructor */
-  OptimalLHSImplementation(const LHSDesign & lhs);
+  TemperatureProfileImplementation();
 
-  /** Default constructor */
-  OptimalLHSImplementation(const LHSDesign & lhs, const SpaceFilling & spaceFilling);
+  /** Constructor with temperature T0 & iMax*/
+  TemperatureProfileImplementation(const OT::NumericalScalar T0,
+                              const OT::UnsignedInteger iMax);
 
   /** Virtual constructor method */
-  OptimalLHSImplementation * clone() const;
+  TemperatureProfileImplementation * clone() const;
 
-  /** Attributes for LHSDesign */
-  LHSDesign getLHS() const;
+  /** Compute temperature T(i) */
+  virtual OT::NumericalScalar operator()(OT::UnsignedInteger i) const;
 
-  /** Attributes for SpaceFilling */
-  SpaceFilling getSpaceFilling() const;
+  /** get T0 */
+  virtual OT::NumericalScalar getT0() const;
 
-  /** The main method is generating a design */
-  virtual LHSResult generate() const;
-
+  /** get iMax */
+  virtual OT::UnsignedInteger getIMax() const;
+  
   /** String converter */
   virtual OT::String __repr__() const;
 
@@ -72,14 +68,11 @@ public:
   virtual void load(OT::Advocate & adv);
 
 protected:
-   LHSDesign lhs_;
-   SpaceFilling spaceFilling_;
+    OT::NumericalScalar T0_;
+    OT::UnsignedInteger iMax_;
 
-   OptimalLHSImplementation() {};
-   friend class OT::Factory<OptimalLHSImplementation>;
-
-}; /* class OptimalLHSImplementation */
+}; /* class TemperatureProfileImplementation */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_OPTIMALLHSIMPLEMENTATION_HXX */
+#endif /* OTLHS_OPTIMALTEMPERATUREPROFILEIMPLEMENTATION_HXX */

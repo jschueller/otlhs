@@ -19,12 +19,12 @@
  *
  */
 #include "openturns/PersistentObjectFactory.hxx"
-#include "SimulatedAnnealingLHS.hxx"
+#include "otlhs/SimulatedAnnealingLHS.hxx"
 #include "openturns/RandomGenerator.hxx"
 #include "openturns/Log.hxx"
-#include "SpaceFillingC2.hxx"
-#include "SpaceFillingPhiP.hxx"
-#include "SpaceFillingMinDist.hxx"
+#include "otlhs/SpaceFillingC2.hxx"
+#include "otlhs/SpaceFillingPhiP.hxx"
+#include "otlhs/SpaceFillingMinDist.hxx"
 #include "openturns/KPermutationsDistribution.hxx"
 
 using namespace OT;

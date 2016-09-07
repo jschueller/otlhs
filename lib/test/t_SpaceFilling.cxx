@@ -1,9 +1,7 @@
 #include <iostream>
 // OT includes
 #include <openturns/OT.hxx>
-#include "SpaceFillingC2.hxx"
-#include "SpaceFillingMinDist.hxx"
-#include "SpaceFillingPhiP.hxx"
+#include "otlhs/OTLHS.hxx"
 
 using namespace OT;
 using namespace OTLHS;

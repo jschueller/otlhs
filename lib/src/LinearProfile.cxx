@@ -18,7 +18,7 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "LinearProfile.hxx"
+#include "otlhs/LinearProfile.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
 
 using namespace OT;

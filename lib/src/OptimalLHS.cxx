@@ -18,12 +18,12 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "OptimalLHS.hxx"
+#include "otlhs/OptimalLHS.hxx"
 #include "openturns/PersistentObjectFactory.hxx"
-#include "OptimalLHSImplementation.hxx"
-#include "SimulatedAnnealingLHS.hxx"
-#include "GeometricProfile.hxx"
-#include "SpaceFillingPhiP.hxx"
+#include "otlhs/OptimalLHSImplementation.hxx"
+#include "otlhs/SimulatedAnnealingLHS.hxx"
+#include "otlhs/GeometricProfile.hxx"
+#include "otlhs/SpaceFillingPhiP.hxx"
 
 using namespace OT;
 

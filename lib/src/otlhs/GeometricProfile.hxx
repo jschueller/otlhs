@@ -1,6 +1,6 @@
 //                                               -*- C++ -*-
 /**
- *  @brief SpaceFillingMinDist
+ *  @brief GeometricProfile
  *
  *  Copyright 2005-2016 Airbus-EDF-IMACS-Phimeca
  *
@@ -18,40 +18,49 @@
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef OTLHS_SPACEFILLINGMINDIST_HXX
-#define OTLHS_SPACEFILLINGMINDIST_HXX
+#ifndef OTLHS_OPTIMALGEOMETRICPROFILE_HXX
+#define OTLHS_OPTIMALGEOMETRICPROFILE_HXX
 
-#include "openturns/PersistentObject.hxx"
-#include "SpaceFillingImplementation.hxx"
+#include "otlhs/TemperatureProfileImplementation.hxx"
 
 namespace OTLHS
 {
 
 /**
- * @class SpaceFillingMinDist
+ * @class GeometricProfile
  *
- * This class computes minimal distance between sample points.
+ * GeometricProfile is a geometric temperature profile for SimulatedAnnealing
  */
-class OTLHS_API SpaceFillingMinDist
-  : public SpaceFillingImplementation
+class OTLHS_API GeometricProfile
+  : public TemperatureProfileImplementation
 {
   CLASSNAME;
 
 public:
   /** Default constructor */
-  SpaceFillingMinDist();
+  GeometricProfile(const OT::NumericalScalar T0=10, const OT::NumericalScalar c=0.95, const OT::UnsignedInteger iMax=2000);
 
   /** Virtual constructor method */
-  SpaceFillingMinDist * clone() const;
+  GeometricProfile * clone() const;
+
+  /** Compute temperature T(i) */
+  OT::NumericalScalar operator()(OT::UnsignedInteger i) const;
 
   /** String converter */
   OT::String __repr__() const;
 
-  /** Evaluate criterion on a sample */
-  OT::NumericalScalar evaluate(const OT::NumericalSample& sample) const;
+  /** Method save() stores the object through the StorageManager */
+  void save(OT::Advocate & adv) const;
 
-}; /* class SpaceFillingMinDist */
+  /** Method load() reloads the object from the StorageManager */
+  void load(OT::Advocate & adv);
+
+private:
+  OT::NumericalScalar c_;
+  mutable OT::NumericalScalar logc_;
+
+}; /* class GeometricProfile */
 
 } /* namespace OTLHS */
 
-#endif /* OTLHS_SPACEFILLINGMINDIST_HXX */
+#endif /* OTLHS_OPTIMALGEOMETRICPROFILE_HXX */
