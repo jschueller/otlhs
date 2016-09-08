@@ -3,9 +3,9 @@
  
 Performs the optimization of an LHS using MonteCarlo simulations.
 
-Usage
------
+Available constructors:
     MonteCarloLHS(lhsDesign, N)
+    
     MonteCarloLHS(lhsDesign, N, spaceFilling)
 
 Parameters

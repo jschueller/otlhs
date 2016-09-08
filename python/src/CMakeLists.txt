@@ -87,3 +87,101 @@ install ( FILES ${SWIGFILES}
         )
 
 
+
+
+if (SPHINX_FOUND AND SPHINX_EXECUTABLE)
+
+  # create a build site-package from which sphinx can import
+  set (OTLHS_PYTHON_BUILD_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR}/site-packages)
+  execute_process (COMMAND ${CMAKE_COMMAND} -E make_directory ${OTLHS_PYTHON_BUILD_MODULE_PATH}/otlhs)
+  foreach (module ${PYTHON_MODULES})
+    execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_BINARY_DIR}/${module}.py ${OTLHS_PYTHON_BUILD_MODULE_PATH}/otlhs/${module}.py)
+    # FIXME: get_target_property (suffix ${SWIG_MODULE_${module}_REAL_NAME} SUFFIX)
+    execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_BINARY_DIR}/_${module}.so ${OTLHS_PYTHON_BUILD_MODULE_PATH}/otlhs/_${module}.so)
+  endforeach ()
+  foreach (file __init__.py)
+    execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_SOURCE_DIR}/${file} ${OTLHS_PYTHON_BUILD_MODULE_PATH}/otlhs/${file})
+  endforeach ()
+
+  # sphinx configuration
+  set (doc_formats)
+  list (APPEND doc_formats html)
+  list (APPEND doc_formats htmlhelp)
+  list (APPEND doc_formats latex)
+  list (APPEND doc_formats doctest)
+  list (APPEND doc_formats qthelp)
+  list (APPEND doc_formats devhelp)
+
+  set (SPHINX_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/sphinx_build)
+  set (SPHINX_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../doc)
+
+  file (MAKE_DIRECTORY ${SPHINX_BINARY_DIR}/_static) # currently empty
+
+  if (NOT DEFINED OPENTURNS_PYTHON_MODULE_PATH)
+    set(OPENTURNS_PYTHON_MODULE_PATH ${OPENTURNS_PYTHON${PYTHON_VERSION_MAJOR}_MODULE_PATH})
+  endif ()
+  configure_file (${SPHINX_SOURCE_DIR}/conf.py.in ${SPHINX_BINARY_DIR}/conf.py @ONLY)
+
+  # get sphinx sources
+  file (GLOB_RECURSE sphinx_sources
+    ${SPHINX_SOURCE_DIR}/*.rst
+    ${SPHINX_SOURCE_DIR}/*.rst_t
+    ${SPHINX_SOURCE_DIR}/*.css_t
+    ${SPHINX_SOURCE_DIR}/*.conf
+    ${SPHINX_SOURCE_DIR}/*.py
+    ${SPHINX_SOURCE_DIR}/*.png
+    ${SPHINX_SOURCE_DIR}/*.html
+    ${SPHINX_SOURCE_DIR}/*.css
+    ${SPHINX_SOURCE_DIR}/*.jpg
+    ${SPHINX_SOURCE_DIR}/*.ico
+    ${SPHINX_SOURCE_DIR}/*.sty
+    ${SPHINX_SOURCE_DIR}/*.txt
+    ${SPHINX_SOURCE_DIR}/*.in
+  )
+
+  # copy sphinx sources
+  set (sphinx_clones)
+  foreach (file ${sphinx_sources})
+    if (EXISTS ${file})
+      file ( RELATIVE_PATH rel_file ${SPHINX_SOURCE_DIR} ${file} )
+      get_filename_component (rel_path ${rel_file} PATH)
+      file (MAKE_DIRECTORY ${SPHINX_BINARY_DIR}/${rel_path})
+      set (sphinx_clone ${SPHINX_BINARY_DIR}/${rel_file})
+      add_custom_command (OUTPUT ${sphinx_clone}
+        COMMAND ${CMAKE_COMMAND} -E copy ${file} ${sphinx_clone}
+        DEPENDS ${file}
+      )
+      list (APPEND sphinx_clones ${sphinx_clone})
+    endif ()
+  endforeach ()
+
+  set (SPHINX_FLAGS "-W" CACHE STRING "sphinx flags")
+  separate_arguments (SPHINX_FLAGS)
+
+  # generate sphinx rule for each format
+  foreach (format ${doc_formats})
+    add_custom_target ( sphinx_${format}
+                        COMMAND ${SPHINX_EXECUTABLE}
+                                  -b ${format}
+                                  ${SPHINX_FLAGS}
+                                  ${SPHINX_BINARY_DIR}
+                                  ${SPHINX_BINARY_DIR}/${format}
+                        DEPENDS ${sphinx_clones}
+                      )
+    foreach (module ${PYTHON_MODULES})
+      add_dependencies (sphinx_${format} _${module})
+    endforeach ()
+  endforeach ()
+
+  # build html by default
+  set_target_properties (sphinx_html PROPERTIES EXCLUDE_FROM_ALL OFF)
+
+  add_custom_command (OUTPUT ${SPHINX_BINARY_DIR}/latex/OpenTURNS.pdf
+                      WORKING_DIRECTORY ${SPHINX_BINARY_DIR}/latex
+                      COMMAND make all-pdf
+                    )
+  add_custom_target (sphinx_pdf DEPENDS ${SPHINX_BINARY_DIR}/latex/OpenTURNS.pdf)
+  add_dependencies (sphinx_pdf sphinx_latex)
+
+  install (DIRECTORY ${SPHINX_BINARY_DIR}/html DESTINATION ${OTLHS_DOC_PATH})
+endif ()

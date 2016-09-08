@@ -3,13 +3,18 @@
 
 Performs the optimization of an LHS using simulated annealing algorithm.
 
-Usage
------
+Available constructors:
+
     SimulatedAnnealingLHS(lhsDesign)
+
     SimulatedAnnealingLHS(lhsDesign, profile)
+
     SimulatedAnnealingLHS(lhsDesign, profile, spaceFilling)
+
     SimulatedAnnealingLHS(initialDesign, bounds)
+
     SimulatedAnnealingLHS(initialDesign, bounds, profile)
+
     SimulatedAnnealingLHS(initialDesign, bounds, profile, spaceFilling)
 
 Parameters

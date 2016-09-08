@@ -1,7 +1,7 @@
 cmake_minimum_required ( VERSION 2.8 )
 
 option ( BUILD_PYTHON                 "Build the python module for the library"                               ON )
-option ( BUILD_DOC                    "Build the documentation"                                               ON )
+option (USE_SPHINX                    "Use sphinx for documentation"                                          ON)
 option ( LINK_PYTHON_LIBRARY          "Link python modules against python library"                            ON )
 option ( INSTALL_TESTS                "Install compiled tests for native platform testing"                    OFF )
 option ( BUILD_SHARED_LIBS            "Build shared libraries"                                                ON )
@@ -35,7 +35,7 @@ set ( OTLHS_SWIG_INCLUDE_PATH ${OTLHS_INCLUDE_PATH}/${PACKAGE_NAME}/swig )
 set ( OTLHS_DATA_PATH share )
 set ( OTLHS_EXAMPLE_PATH ${OTLHS_DATA_PATH}/${PACKAGE_NAME}/examples )
 set ( OTLHS_CONFIG_CMAKE_PATH lib${LIB_SUFFIX}/cmake/otlhs )
-set ( DOC_INSTALL_PATH share/doc/${PACKAGE_NAME} )
+set ( OTLHS_DOC_PATH share/${PACKAGE_NAME}/doc)
 
 if ( BUILD_PYTHON )
   # workaround for cmake bug #0013449
@@ -50,6 +50,14 @@ if ( BUILD_PYTHON )
   endif ()
   find_package ( PythonInterp )
   find_package ( PythonLibs )
+  include (FindPythonModule)
+
+  if (USE_SPHINX)
+    find_program (SPHINX_EXECUTABLE NAMES sphinx-build DOC "Sphinx Documentation Builder (sphinx-doc.org)")
+    if (SPHINX_EXECUTABLE)
+      find_python_module (sphinx 1.1)
+    endif ()
+  endif ()
 
   if ( PYTHONINTERP_FOUND )
     execute_process ( COMMAND ${PYTHON_EXECUTABLE} -c "from distutils import sysconfig; print(sysconfig.get_python_lib(plat_specific=True, prefix='${CMAKE_INSTALL_PREFIX}'))"
@@ -161,10 +169,6 @@ configure_file (
 add_custom_target ( uninstall
   COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake
 )
-
-if ( BUILD_DOC )
-  add_subdirectory ( doc )
-endif ()
 
 set ( OTLHS_LIBRARY                 otlhs )
 set ( OTLHS_LIBRARIES ${OPENTURNS_LIBRARIES} )
