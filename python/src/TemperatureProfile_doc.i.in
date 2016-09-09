@@ -3,5 +3,11 @@
 %feature("docstring") OTLHS::TemperatureProfile
 OTLHS_TemperatureProfile_doc
 
-%feature("docstring") OTLHS::Temperature::operator()
+%feature("docstring") OTLHS::TemperatureProfile::operator()
 OTLHS_TemperatureProfile_call_doc
+
+%feature("docstring") OTLHS::TemperatureProfile::getIMax
+OTLHS_TemperatureProfile_getIMax
+
+%feature("docstring") OTLHS::TemperatureProfile::getT0
+OTLHS_TemperatureProfile_getT0

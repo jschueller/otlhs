@@ -24,11 +24,17 @@ value:  float
 %enddef
 %feature("docstring") OTLHS::SpaceFillingImplementation::evaluate
 OTLHS_SpaceFilling_evaluate_doc
+
 // ---------------------------------------------------------------------
-%define OTLHS_SpaceFilling_perturb_lhs_doc
-"Intentionaly not documented
-Do not use"
+
+%define OTLHS_SpaceFilling_isMinimizationProblem
+"Minimization flag accessor.
+
+Returns
+-------
+isMinimization : bool
+    Whether the problem is a minimization.
+"
 %enddef
-%feature("docstring") OTLHS::SpaceFillingImplementation::perturbLHS
-OTLHS_SpaceFilling_perturb_lhs_doc
-// ---------------------------------------------------------------------
+%feature("docstring") OTLHS::SpaceFillingImplementation::isMinimizationProblem
+OTLHS_SpaceFilling_isMinimizationProblem

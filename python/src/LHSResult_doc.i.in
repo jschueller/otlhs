@@ -2,7 +2,7 @@
 "LHSResult resumes an LHS optimization using Monte Carlo or Simulated Annealing algorithms
 
 Available constructor:
-    LHSResult(bounds, spaceFilling, nRestart);
+    LHSResult(*bounds, spaceFilling, nRestart*)
 
 Parameters
 ----------
@@ -15,7 +15,6 @@ nRestart : int
 
 Notes
 -----
-
 This class is not built by hand, but returned by optimization algorithms.
 
 Examples
@@ -159,6 +158,89 @@ Examples
 %enddef
 %feature("docstring") OTLHS::LHSResult::getPhiP
 OTLHS_LHSResult_get_phi_p_doc
-// ---------------------------------------------------------------------
-// LHSResult docstrings are defined in LHSResult_doc.i.in
 
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSResult::drawHistoryCriterion
+"Draw criterion history.
+
+Parameters
+----------
+restart : int (optional)
+    The restart index.
+title : str (optional)
+    Graph title.
+
+Returns
+-------
+graph : :class:`~openturns.Graph`
+    The resulting graph."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSResult::drawHistoryProbability
+"Draw probability history.
+
+Parameters
+----------
+restart : int (optional)
+    The restart index.
+title : str (optional)
+    Graph title.
+
+Returns
+-------
+graph : :class:`~openturns.Graph`
+    The resulting graph."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSResult::drawHistoryTemperature
+"Draw temperature history.
+
+Parameters
+----------
+restart : int (optional)
+    The restart index.
+title : str (optional)
+    Graph title.
+
+Returns
+-------
+graph : :class:`~openturns.Graph`
+    The resulting graph."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSResult::getMinDist
+"Minimum distance accessor.
+
+Parameters
+----------
+restart : int (optional)
+    The restart index.
+
+Returns
+-------
+minDist : float
+    The minimum distance of sample points."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSResult::getNumberOfRestarts
+"Restart number accessor.
+
+Returns
+-------
+restart : int (optional)
+    The number of restart."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSResult::getOptimalValue
+"Optimal value accessor.
+
+Returns
+-------
+value : float (optional)
+    The optimal value."

@@ -3,13 +3,13 @@
 Additionaly, the subdivision of the range is done and a grid is drawn in order to demonstrate the LHS behaviour.
 
 Available constructor:
-  PlotDesign(data, bounds, Nx, Ny, title)
+  PlotDesign(*data, bounds, Nx, Ny, title*)
 
-  PlotDesign(data, bounds, Nx, Ny)
+  PlotDesign(*data, bounds, Nx, Ny*)
 
-  PlotDesign(lhsResult, Nx, Ny, title)
+  PlotDesign(*lhsResult, Nx, Ny, title*)
 
-  PlotDesign(lhsResult, Nx, Ny)
+  PlotDesign(*lhsResult, Nx, Ny*)
 
 Parameters
 ----------

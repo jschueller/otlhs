@@ -1,39 +1,39 @@
 %define OTLHS_SimulatedAnnealing_doc
-"SimulatedAnnealingLHS class
+"LHS optimization using simulated annealing.
 
 Performs the optimization of an LHS using simulated annealing algorithm.
 
 Available constructors:
 
-    SimulatedAnnealingLHS(lhsDesign)
+    SimulatedAnnealingLHS(*lhsDesign*)
 
-    SimulatedAnnealingLHS(lhsDesign, profile)
+    SimulatedAnnealingLHS(*lhsDesign, profile*)
 
-    SimulatedAnnealingLHS(lhsDesign, profile, spaceFilling)
+    SimulatedAnnealingLHS(*lhsDesign, profile, spaceFilling*)
 
-    SimulatedAnnealingLHS(initialDesign, bounds)
+    SimulatedAnnealingLHS(*initialDesign, bounds*)
 
-    SimulatedAnnealingLHS(initialDesign, bounds, profile)
+    SimulatedAnnealingLHS(*initialDesign, bounds, profile*)
 
-    SimulatedAnnealingLHS(initialDesign, bounds, profile, spaceFilling)
+    SimulatedAnnealingLHS(*initialDesign, bounds, profile, spaceFilling*)
 
 Parameters
 ----------
 
-lhsDesign: LHSDesign
+lhsDesign : :class:`~otlhs.LHSDesign`
     Factory that generate designs
 
-initialDesign: 2d-array sequence
+initialDesign : 2d-array sequence
     Initial design to be optimized
 
-bounds : Interval
+bounds : :class:`~openturns.Interval`
     Bounds of designs
 
-profile: TemperatureProfile
+profile : :class:`~otlhs.TemperatureProfile`
     Temperature profile used by the simulated annealing algorithm
     Default one is GeometricProfile
 
-spaceFilling: SpaceFilling
+spaceFilling : :class:`~otlhs.SpaceFilling`
     Criterion to be optimized
     Default one is SpaceFillingMinDist
 

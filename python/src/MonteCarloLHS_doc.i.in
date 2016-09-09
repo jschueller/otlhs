@@ -1,23 +1,20 @@
 %define OTLHS_MonteCarloLHS_doc
-"MonteCarloLHS class.
- 
-Performs the optimization of an LHS using MonteCarlo simulations.
+"Monte Carlo LHS optimization.
+
+Performs the optimization of an LHS using Monte Carlo simulations.
 
 Available constructors:
-    MonteCarloLHS(lhsDesign, N)
-    
-    MonteCarloLHS(lhsDesign, N, spaceFilling)
+    MonteCarloLHS(*lhsDesign, N*)
+
+    MonteCarloLHS(*lhsDesign, N, spaceFilling*)
 
 Parameters
 ----------
-
-lhsDesign: LHSDesign
+lhsDesign : :class:`~otlhs.LHSDesign`
      Factory that generate designs
-
 N : int
     Number of simulations
-
-spaceFilling: SpaceFilling
+spaceFilling : :class:`~otlhs.SpaceFilling`
     Criterion to be optimized
     Default spaceFilling is MinDist
 

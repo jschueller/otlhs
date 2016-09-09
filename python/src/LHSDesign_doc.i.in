@@ -2,9 +2,9 @@
 "LHS class generate design of experimients according to Latin Hypercube (LHS) technique.
 
 Available constructor:
-    LHSDesign( bounds, size)
+    LHSDesign(*bounds, size*)
 
-    LHSDesign( bounds, size, centeredDesign)
+    LHSDesign(*bounds, size, centeredDesign*)
 
 Parameters
 ----------
@@ -13,7 +13,8 @@ bounds : :class:`~openturns.Interval`
 size : int
     Size of the design.
 centeredDesign :  bool
-    Fix if design is centered on each selected strata (True) or if it is radomly genererated in the strata.
+    Fix if design is centered on each selected strata (True) or if it is
+    randomly genererated in the strata.
     Default value is False
 
 Notes
@@ -64,3 +65,32 @@ Examples
 %feature("docstring") OTLHS::LHSDesign::generate
 OTLHS_LHS_generate_doc
 // ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSDesign::getBounds
+"Bounds accessor.
+
+Returns
+-------
+bounds : :class:`~openturns.Interval`
+    Bounds of the uniform distributions."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSDesign::getSize
+"Size accessor.
+
+Returns
+-------
+size : int
+    Size of the design."
+
+// ---------------------------------------------------------------------
+
+%feature("docstring") OTLHS::LHSDesign::isCenteredDesign
+"Centered property accessor.
+
+Returns
+-------
+centeredDesign :  bool
+    Fix if design is centered on each selected strata (True) or if it is
+    randomly genererated in the strata."
