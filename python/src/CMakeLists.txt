@@ -99,7 +99,7 @@ if (SPHINX_FOUND AND SPHINX_EXECUTABLE)
     # FIXME: get_target_property (suffix ${SWIG_MODULE_${module}_REAL_NAME} SUFFIX)
     execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_BINARY_DIR}/_${module}.so ${OTLHS_PYTHON_BUILD_MODULE_PATH}/otlhs/_${module}.so)
   endforeach ()
-  foreach (file __init__.py)
+  foreach (file __init__.py pyplotdesign.py)
     execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_SOURCE_DIR}/${file} ${OTLHS_PYTHON_BUILD_MODULE_PATH}/otlhs/${file})
   endforeach ()
 
@@ -155,6 +155,22 @@ if (SPHINX_FOUND AND SPHINX_EXECUTABLE)
     endif ()
   endforeach ()
 
+  # copy python tests in root
+  file (GLOB_RECURSE python_tests
+    ${CMAKE_SOURCE_DIR}/python/test/t_ishigami.py
+  )
+  foreach (file ${python_tests})
+    if (EXISTS ${file})
+      get_filename_component (name ${file} NAME)
+      set (sphinx_clone ${SPHINX_BINARY_DIR}/${name})
+      add_custom_command (OUTPUT ${sphinx_clone}
+        COMMAND ${CMAKE_COMMAND} -E copy ${file} ${sphinx_clone}
+        DEPENDS ${file}
+      )
+      list (APPEND sphinx_clones ${sphinx_clone})
+    endif ()
+  endforeach()
+  
   set (SPHINX_FLAGS "-W" CACHE STRING "sphinx flags")
   separate_arguments (SPHINX_FLAGS)
 

@@ -53,7 +53,7 @@ macro ( ot_pyinstallcheck_test TESTNAME )
       set ( _CMD )
     endif ( ${ARG} MATCHES PRE )
   endforeach ( _ARG )
-  
+
   if (_IGNOREOUT)
     set ( COMMAND "( ${PYTHON_EXECUTABLE} ${TESTNAME_LOC} ${_PARAMS} > /dev/null )" )
     set ( EXTERNAL_COMMAND "$PYTHON_EXE ${TESTNAME_SRC} > $DEBUG_FILE 2>&1" )
@@ -71,17 +71,6 @@ macro ( ot_pyinstallcheck_test TESTNAME )
   endif (_PRE OR _POST)
 
   add_test ( pyinstallcheck_${TESTNAME} "sh" "-c" "${COMMAND}" )
-
-#   if ( MINGW )
-#     install ( FILES ${TESTNAME_OUT}
-#               DESTINATION ${OTLHS_EXAMPLE_PATH} 
-#               RENAME ${TESTNAME_SRC}.expout
-#             )
-#           add_check_file ( ${EXTERNAL_PYTHONINSTALLCHECK_FILE} ${TESTNAME_SRC} ${EXTERNAL_COMMAND} ${CUR_PYTHONINSTALLCHECK} )
-#     math( EXPR CUR_PYTHONINSTALLCHECK "${CUR_PYTHONINSTALLCHECK} + 1" )
-#   endif ( MINGW )
-
-
   set_tests_properties ( pyinstallcheck_${TESTNAME} PROPERTIES ENVIRONMENT "${PYINSTALLCHECK_ENVIRONMENT}" )
   list ( APPEND PYINSTALLCHECK_TO_BE_RUN ${TESTNAME_SRC} )
   install ( FILES ${TESTNAME_SRC}
@@ -94,7 +83,10 @@ ot_pyinstallcheck_test ( SpaceFilling )
 ot_pyinstallcheck_test ( OptimalLHS_MC )
 ot_pyinstallcheck_test ( OptimalLHS_SA )
 # ot_pyinstallcheck_test ( OptimalLHS_std )
-#ot_pyinstallcheck_test (docstring)
+if (MATPLOTLIB_FOUND)
+ot_pyinstallcheck_test (docstring)
+ot_pyinstallcheck_test (ishigami IGNOREOUT)
+endif ()
 
 add_custom_target ( pyinstallcheck COMMAND ${CMAKE_CTEST_COMMAND} -R "^pyinstallcheck_"
                     DEPENDS ${PYINSTALLCHECK_TO_BE_RUN}

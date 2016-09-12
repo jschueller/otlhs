@@ -60,7 +60,7 @@ Examples
 >>> # Geometric profile
 >>> geomProfile = otlhs.GeometricProfile(10.0, 0.95, 2000)
 >>> # Simulated Annealing LHS with geometric temperature profile, C2 optimization
->>> optimalLHSAlgorithm = otlhs.SimulatedAnnealingLHS(lhs, geomProfile, spaceFilling)"
+>>> optimalLHSAlgorithm = otlhs.SimulatedAnnealingLHS(lhsDesign, geomProfile, spaceFilling)"
 %enddef
 %feature("docstring") OTLHS::SimulatedAnnealingLHS
 OTLHS_SimulatedAnnealing_doc

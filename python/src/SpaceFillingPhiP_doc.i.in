@@ -43,7 +43,7 @@ Examples
 >>> import openturns as ot
 >>> import otlhs
 >>> # Build an LHS using openturns class
->>> lhs = ot.LHSExperiment(100)
+>>> lhs = ot.LHSExperiment(ot.Uniform(), 100)
 >>> design = lhs.generate()
 >>> # Compute the PhiP criterion
 >>> crit = otlhs.SpaceFillingPhiP(50).evaluate(design)"

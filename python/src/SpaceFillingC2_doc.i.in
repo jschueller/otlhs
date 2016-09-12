@@ -17,7 +17,9 @@ Compute the centered L2 discrepancy:
 %enddef
 %feature("docstring") OTLHS::SpaceFillingC2
 OTLHS_SpaceFillingC2_doc
+
 // ---------------------------------------------------------------------
+
 %define OTLHS_SpaceFillingC2_evaluate_doc
 "Compute the C2 criterion for a specific design
 
@@ -33,15 +35,15 @@ crit:  float
 
 Examples
 --------
-
 >>> import openturns as ot
 >>> import otlhs
 >>> # Build an LHS using openturns class
->>> lhs = ot.LHSExperiment(100)
+>>> lhs = ot.LHSExperiment(ot.Uniform(), 100)
 >>> design = lhs.generate()
 >>> # Compute the C2 criterion
 >>> crit = otlhs.SpaceFillingC2().evaluate(design)"
 %enddef
 %feature("docstring") OTLHS::SpaceFillingC2::evaluate
 OTLHS_SpaceFillingC2_evaluate_doc
+
 // ---------------------------------------------------------------------

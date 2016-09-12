@@ -40,7 +40,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(10)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Plot the design
 >>> plot = otlhs.PlotDesign(design, bounds, 10, 10)
@@ -67,7 +67,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -93,7 +93,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -119,7 +119,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -145,7 +145,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -171,7 +171,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -197,7 +197,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20

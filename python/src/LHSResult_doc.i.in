@@ -72,7 +72,7 @@ Examples
 >>> lhs = otlhs.LHSDesign(ot.Interval(3), 100)
 >>> spaceFilling = otlhs.SpaceFillingPhiP(10)
 >>> # By Monte Carlo
->>> algoMC = otlhs.MonteCarloLHS(lhs, 100000, spaceFilling)
+>>> algoMC = otlhs.MonteCarloLHS(lhs, 1000, spaceFilling)
 >>> # Get LHSResult
 >>> resultMC = algoMC.generate()
 >>> optimalDesignMC = resultMC.getOptimalDesign()
@@ -80,7 +80,7 @@ Examples
 >>> profile = otlhs.GeometricProfile()
 >>> algoSA = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
 >>> # Get LHSResult
->>> resultSA = algoSA.generate(50)
+>>> resultSA = algoSA.generate(5)
 >>> optimalDesignSA = resultSA.getOptimalDesign()
 >>> # Get optimal results for all restarts
 >>> optimRestart = [resultSA.getOptimalDesign(i) for i in range(resultSA.getNumberOfRestarts())]"
@@ -107,7 +107,7 @@ Examples
 >>> spaceFilling = otlhs.SpaceFillingPhiP(50)
 >>> algoSA = otlhs.SimulatedAnnealingLHS(lhs, profile, spaceFilling)
 >>> # Get LHSResult
->>> resultSA = algoSA.generate(50)
+>>> resultSA = algoSA.generate(5)
 >>> criterionHistory = resultSA.getAlgoHistory()"
 %enddef
 %feature("docstring") OTLHS::LHSResult::getAlgoHistory
