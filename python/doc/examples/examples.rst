@@ -28,28 +28,28 @@ Comparing to the :class:`~openturns.LHSExperiment` of OpenTURNS library, when re
 
 Plot of LHS
 -----------
-Class :class:`~otlhs.pyplotdesign.PyPlotDesign` helps to plot a LHS design and draw it through matplotlib.\\
+Class :class:`~otlhs.pyplotdesign.PyPlotDesign` helps to plot a LHS design and draw it through matplotlib.
 
-.. doctest::
+.. code-block:: python
 
-    >>> import openturns as ot
-    >>> import otlhs
-    >>> from otlhs.pyplotdesign import PyPlotDesign
-    >>> import matplotlib.pylab as plt
-    >>> #  Generating a design of size N=10
-    >>> N = 10
-    >>> # Considering independent Uniform distributions of dimension 3
-    >>> # Bounds are (-1,1), (0,2) and (0, 0.5)
-    >>> bounds = ot.Interval([-1,0,0], [1,2,0.5])
-    >>> # Centered LHS
-    >>> lhs_centered = otlhs.LHSDesign(bounds, N, True)
-    >>> centeredLHS = lhs_centered.generate()
-    >>> # Draw design and grid
-    >>> plot = PyPlotDesign(centeredLHS, bounds, 10, 10)
-    >>> # Show the graph
-    >>> plt.show()
-    >>> # Export the graph
-    >>> plot.savefig('design.png')
+    import openturns as ot
+    import otlhs
+    from otlhs.pyplotdesign import PyPlotDesign
+    import matplotlib.pylab as plt
+    #  Generating a design of size N=10
+    N = 10
+    # Considering independent Uniform distributions of dimension 3
+    # Bounds are (-1,1), (0,2) and (0, 0.5)
+    bounds = ot.Interval([-1,0,0], [1,2,0.5])
+    # Centered LHS
+    lhs_centered = otlhs.LHSDesign(bounds, N, True)
+    centeredLHS = lhs_centered.generate()
+    # Draw design and grid
+    plot = PyPlotDesign(centeredLHS, bounds, 10, 10)
+    # Show the graph
+    plt.show()
+    # Export the graph
+    plot.savefig('design.png')
 
 LHS and space filling
 ---------------------

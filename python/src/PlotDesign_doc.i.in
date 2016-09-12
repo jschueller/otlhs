@@ -48,7 +48,7 @@ Examples
 >>> plot = otlhs.PlotDesign(design, bounds)
 >>> g = ot.Graph()
 >>> g.add(plot)
->>> g.draw('myDesign', 640, 480, ot.GraphImplementation.PDF)"
+>>> #g.draw('myDesign', 640, 480, ot.GraphImplementation.PDF)"
 %enddef
 %feature("docstring") OTLHS::PlotDesign
 OTLHS_PlotDesign_doc
@@ -182,7 +182,9 @@ Examples
 %enddef
 %feature("docstring") OTLHS::PlotDesign::setTitle
 OTLHS_PlotDesign_settitle_doc
+
 // ---------------------------------------------------------------------
+
 %define OTLHS_PlotDesign_draw_doc
 "The method returns the draw command used for plots.
 
@@ -208,7 +210,9 @@ Examples
 %enddef
 %feature("docstring") OTLHS::PlotDesign::draw
 OTLHS_PlotDesign_draw_doc
+
 // ---------------------------------------------------------------------
+
 %define OTLHS_PlotDesign_buildlabels_doc
 "
 The method builds default labels if design does not have its own description

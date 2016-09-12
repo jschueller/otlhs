@@ -89,7 +89,7 @@ install ( FILES ${SWIGFILES}
 
 
 
-if (SPHINX_FOUND AND SPHINX_EXECUTABLE)
+if (SPHINX_FOUND AND SPHINX_EXECUTABLE AND MATPLOTLIB_FOUND)
 
   # create a build site-package from which sphinx can import
   set (OTLHS_PYTHON_BUILD_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR}/site-packages)

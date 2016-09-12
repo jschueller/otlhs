@@ -37,7 +37,6 @@ def PyPlotDesign(design, bounds, Nx, Ny, figure=None, axes=[], plot_kwargs={}, a
     >>> # Generate a design
     >>> design = lhsDesign.generate()
     >>> # Plot the design
-    >>> from otlhs.pyplotdesign import PyPlotDesign
     >>> fig = PyPlotDesign(design, bounds, 10, 10)
     """
 
