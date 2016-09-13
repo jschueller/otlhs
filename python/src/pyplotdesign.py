@@ -1,5 +1,4 @@
 import openturns as ot
-import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -9,27 +8,26 @@ def PyPlotDesign(design, bounds, Nx, Ny, figure=None, axes=[], plot_kwargs={}, a
     In addition, the function plot a grid, i.e. horizontal and vertical lines to distinguish LHS character
     The function requires Matplotlib.
 
-    Parameters:
-    -----------
-        design : NumericalSample or 2D array-like
-            Design
-        bounds: Interval
-            Bounds of the underlying uniform distributions
-        nxdiv : int
-            Number of subdivisions in the X axis
-        nydiv : int
-            Number of subdivisions in the Y axis
+    Parameters
+    ----------
+    design : :class:`openturns.NumericalSample` or 2D array-like
+        Design
+    bounds: :class:`openturns.Interval`
+        Bounds of the underlying uniform distributions
+    nxdiv : int
+        Number of subdivisions in the X axis
+    nydiv : int
+        Number of subdivisions in the Y axis
 
-    Returns:
+    Returns
+    -------
+    fig : matplotlib figure
+          Figure representing the LHS
+
+    Examples
     --------
-        fig : matplotlib figure
-              Figure representing the LHS
-
-    Examples:
-    ---------
     >>> import openturns as ot
     >>> import otlhs
-
     >>> # Bounds are [0,1]^5
     >>> bounds = ot.Interval(5)
     >>> # Size of sample
@@ -39,9 +37,7 @@ def PyPlotDesign(design, bounds, Nx, Ny, figure=None, axes=[], plot_kwargs={}, a
     >>> # Generate a design
     >>> design = lhsDesign.generate()
     >>> # Plot the design
-    >>> from otlhs.plotdesign import PlotDesign
     >>> fig = PyPlotDesign(design, bounds, 10, 10)
-
     """
 
     # check that arguments are dictionnaries

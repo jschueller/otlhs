@@ -3,13 +3,13 @@
 Additionaly, the subdivision of the range is done and a grid is drawn in order to demonstrate the LHS behaviour.
 
 Available constructor:
-  PlotDesign(data, bounds, Nx, Ny, title)
+  PlotDesign(*data, bounds, Nx, Ny, title*)
 
-  PlotDesign(data, bounds, Nx, Ny)
+  PlotDesign(*data, bounds, Nx, Ny*)
 
-  PlotDesign(lhsResult, Nx, Ny, title)
+  PlotDesign(*lhsResult, Nx, Ny, title*)
 
-  PlotDesign(lhsResult, Nx, Ny)
+  PlotDesign(*lhsResult, Nx, Ny*)
 
 Parameters
 ----------
@@ -40,7 +40,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(10)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Plot the design
 >>> plot = otlhs.PlotDesign(design, bounds, 10, 10)
@@ -48,7 +48,7 @@ Examples
 >>> plot = otlhs.PlotDesign(design, bounds)
 >>> g = ot.Graph()
 >>> g.add(plot)
->>> g.draw('myDesign', 640, 480, ot.GraphImplementation.PDF)"
+>>> #g.draw('myDesign', 640, 480, ot.GraphImplementation.PDF)"
 %enddef
 %feature("docstring") OTLHS::PlotDesign
 OTLHS_PlotDesign_doc
@@ -67,7 +67,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -93,7 +93,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -119,7 +119,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -145,7 +145,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -171,7 +171,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -182,7 +182,9 @@ Examples
 %enddef
 %feature("docstring") OTLHS::PlotDesign::setTitle
 OTLHS_PlotDesign_settitle_doc
+
 // ---------------------------------------------------------------------
+
 %define OTLHS_PlotDesign_draw_doc
 "The method returns the draw command used for plots.
 
@@ -197,7 +199,7 @@ Examples
 >>> import otlhs
 >>> # Design is a here a Normal sample
 >>> design = ot.ComposedDistribution(3* [ot.Uniform()]).getSample(100)
->> # Fix bounds
+>>> # Fix bounds
 >>> bounds = ot.Interval(3)
 >>> # Fix Nx, Ny
 >>> Nx, Ny = 20, 20
@@ -208,7 +210,9 @@ Examples
 %enddef
 %feature("docstring") OTLHS::PlotDesign::draw
 OTLHS_PlotDesign_draw_doc
+
 // ---------------------------------------------------------------------
+
 %define OTLHS_PlotDesign_buildlabels_doc
 "
 The method builds default labels if design does not have its own description

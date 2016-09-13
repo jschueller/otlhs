@@ -37,7 +37,7 @@ Examples
 >>> T0 = 10.0
 >>> iMax = 100
 >>> c = 0.90
->>> geometricProfile = otlhs.GeometricProfile(T0, c iMax)
+>>> geometricProfile = otlhs.GeometricProfile(T0, c, iMax)
 "
 %enddef
 %feature("docstring") OTLHS::GeometricProfile
@@ -65,10 +65,10 @@ Examples
 >>> T0 = 10.0
 >>> iMax = 100
 >>> c = 0.90
->>> geometricProfile = otlhs.GeometricProfile(T0, c iMax)
+>>> geometricProfile = otlhs.GeometricProfile(T0, c, iMax)
 >>> temperature = geometricProfile(5)
 >>> print(temperature)
-5.9049"
+5.9049..."
 %enddef
 %feature("docstring") OTLHS::GeometricProfile::operator()
 OTLHS_GeometricProfile_call_doc

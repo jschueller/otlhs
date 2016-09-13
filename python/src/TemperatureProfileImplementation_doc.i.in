@@ -25,4 +25,29 @@ temperature:  float
 %enddef
 %feature("docstring") OTLHS::TemperatureProfileImplementation::operator()
 OTLHS_TemperatureProfile_call_doc
+
 // ---------------------------------------------------------------------
+
+%define OTLHS_TemperatureProfile_getIMax
+"Maximum index value accessor
+
+Returns
+-------
+iMax : int
+    The maximum index value"
+%enddef
+%feature("docstring") OTLHS::TemperatureProfileImplementation::getIMax
+OTLHS_TemperatureProfile_getIMax
+
+// ---------------------------------------------------------------------
+
+%define OTLHS_TemperatureProfile_getT0
+"Temperature origin accessor
+
+Returns
+-------
+t0 : float
+    The temperature origin"
+%enddef
+%feature("docstring") OTLHS::TemperatureProfileImplementation::getT0
+OTLHS_TemperatureProfile_getT0

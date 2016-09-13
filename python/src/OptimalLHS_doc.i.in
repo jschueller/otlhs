@@ -3,7 +3,7 @@
 %feature("docstring") OTLHS::OptimalLHS
 OTLHS_OptimalLHS_doc
 
-%feature("docstring") OTLHS::OptimalLHS::genrate
+%feature("docstring") OTLHS::OptimalLHS::generate
 OTLHS_OptimalLHS_generate_doc
 
 %feature("docstring") OTLHS::OptimalLHS::getLHS
