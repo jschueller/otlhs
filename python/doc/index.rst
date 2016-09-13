@@ -1,5 +1,8 @@
-OTTemplate documentation
-========================
+OTLHS documentation
+===================
+
+.. figure:: logoOTLHS.png
+    :scale: 50%
 
 User documentation
 ------------------
