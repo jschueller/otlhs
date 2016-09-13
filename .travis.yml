@@ -16,3 +16,20 @@ script:
     .
   - make install -j2 && make tests -j2 && ctest -j2 --output-on-failure --timeout 100 && make sphinx_doctest
 
+after_success:
+  - test "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" || exit 0
+  - git clone https://${GH_TOKEN}@github.com/openturns/openturns.github.io.git
+  - REPO_NAME=`echo "${TRAVIS_REPO_SLUG}" | cut -d "/" -f 2`
+  - mkdir -p openturns.github.io/${REPO_NAME}/${TRAVIS_BRANCH}
+  - cp -r ~/.local/share/${REPO_NAME}/doc/html/* openturns.github.io/${REPO_NAME}/${TRAVIS_BRANCH}
+  - cd openturns.github.io
+  - touch .nojekyll
+  - git config user.email "support@travis-ci.com"
+  - git config user.name "Travis CI"
+  - git add -A .
+  - git commit -a -m "Travis build ${REPO_NAME} ${TRAVIS_BUILD_NUMBER}"
+  - git push --quiet origin master > /dev/null 2>&1
+
+env:
+  global:
+    secure: br/lx6DneNzDnqh0aM4lyjvBID8XETUHcE8BRZRv4tELbvflItfQr2RyVDI5ooZQXRh2fq/37RC235SEVnvZsBTT7j1NRM9m5WkdFxPJuqBloyDhLSoceWrfT/VC+MHt4lARdVGP9y3L5VaVwnWMeCsdkdJqa+1jQTf1ZCL+YF8mFdtQpy0Fjc7G3I7A4gQPkHdb8QfLmg2Z6X37RlOyK2CHd/FSTktg7yJCgOz2RyeiSvTYzCQ1BY/s4gNg274QmzW7YwcsFE9FY5GZXGNseLTur2JCzVmjYJ4HvH+j0H49pDnZSBg3T/Y095jMiJqDa1Uv3+AsakwzzJGHO1siBzkic5y2stqp7l9wUE4tBym0m2XWfLSqKrvLJmFrujorSmFU57jdVkJJM1kTqzxjFGgpn8k3HWZmAVkQwZM5jQtXHi8rv41SxQeguxvj+bDhaoV31tbHjc+ALtkVBAs6PX+VofXFiLUq4gdDXWftU8FRrwQkKbAH/xf/Pis3SPrATjWSaPdiMvD+PaNLKd55TwVImY8HBP2X/TN9JZClhhW2J4wqAD6RCtYg8lneimFv7Ua2wiVrNF1+NOvgjsGkSgSJcC7JfRrAwV9IwKEK1aRtPW1ubrw6bI+Yv1GEvRE7/Xy2y6ASlp5myOVf20RACbioFJMuF6oYrBpPiWCE7lU=
