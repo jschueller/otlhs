@@ -129,20 +129,6 @@ macro ( ot_add_current_dir_to_include_dirs )
 endmacro ( ot_add_current_dir_to_include_dirs )
 
 
-# The tests can't be run if this function is absent
-enable_testing ()
-add_custom_target ( tests COMMENT "Build tests" )
-add_custom_target ( check COMMENT "Run pre-installation tests" )
-add_custom_target ( installcheck COMMENT "Run post-installation tests" )
-
-add_subdirectory ( lib )
-add_dependencies ( check cppcheck )
-
-if ( PYTHONINTERP_FOUND AND PYTHONLIBS_FOUND AND SWIG_FOUND AND BUILD_SHARED_LIBS )
-  add_subdirectory ( python )
-  add_dependencies ( installcheck pyinstallcheck )
-endif ()
-
 set ( CPACK_PACKAGE_NAME          ${PACKAGE_NAME} )
 set ( CPACK_PACKAGE_VERSION_MAJOR 1              )
 set ( CPACK_PACKAGE_VERSION_MINOR 3              )
@@ -159,6 +145,22 @@ if ( CPACK_PACKAGE_VERSION_PATCH )
   set ( PACKAGE_VERSION       ${PACKAGE_VERSION}.${CPACK_PACKAGE_VERSION_PATCH} )
 endif ()
 set ( CPACK_SOURCE_PACKAGE_FILE_NAME ${PACKAGE_NAME}-${PACKAGE_VERSION} )
+
+
+# The tests can't be run if this function is absent
+enable_testing ()
+add_custom_target (tests COMMENT "Build tests")
+add_custom_target (check COMMENT "Run pre-installation tests")
+add_custom_target (installcheck COMMENT "Run post-installation tests")
+
+add_subdirectory (lib)
+add_dependencies (check cppcheck)
+
+if (PYTHONINTERP_FOUND AND PYTHONLIBS_FOUND AND SWIG_FOUND AND BUILD_SHARED_LIBS)
+  add_subdirectory (python)
+  add_dependencies (installcheck pyinstallcheck)
+endif ()
+
 
 # uninstall target
 configure_file (
