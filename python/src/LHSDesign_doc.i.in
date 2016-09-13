@@ -1,5 +1,5 @@
 %define OTLHS_LHS_doc
-"LHS class generate design of experimients according to Latin Hypercube (LHS) technique.
+"LHS class generate design of experiments according to Latin Hypercube (LHS) technique.
 
 Available constructor:
     LHSDesign(*bounds, size*)
