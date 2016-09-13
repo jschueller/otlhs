@@ -81,6 +81,7 @@ Optimized LHS using Monte Carlo
 -------------------------------
 As with Monte Carlo, user decides of a fixed number of iterations, but this time this number is part of the temperature profile.
 Two profiles are currently provided:
+
 - Linear profile: :math:`T(i) = T(0) \left( 1 - \frac{i}{nrIter} \right)`
 - Geometric profile: :math:`T(i) = T(0) c^i,\; 0 < c < 1`
 

@@ -19,7 +19,7 @@ For specific designs, criteria values (:math:`C_2`, mindist and :math:`\phi_{p}`
 Those scripts are located in the *validation* folder of this module.  Comparisons are very good, absolute error is less than :math:`10^{-13}`
 
 As mentionned previously, :math:`C_2` criterion can be computed efficiently when a small perturbation is performed on design.
-This specific method is compared to the DiceDesign's ones: absolute error is less or equal to :math:`10^{-10}`.\\
+This specific method is compared to the DiceDesign's ones: absolute error is less or equal to :math:`10^{-10}`.
 
 Note that for $\phi_p$ criterion, DiceDesign computes the new value after a permutation without taking into account the oldest criterion.
 In this module, criterion update has been implemented, but is used only when parameter :math:`p \geq 5`. Indeed, numerical experiments have shown instability of the update when p becomes large.
@@ -153,56 +153,56 @@ In addition, designs, optimized criterion convergence and elementary perturbatio
 Simulated annealing results - Test id 1:
 
 .. figure:: lhs_sa_geom_10.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_lhs_sa_geom_10.png
-    :scale: 35 %
+    :scale: 65 %
 
 .. figure:: crit_sa_geom.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_c2_crit.png
-    :scale: 35 %
+    :scale: 65 %
 
 .. figure:: lhs_c2_proba.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_c2_proba.png
-    :scale: 35 %
+    :scale: 65 %
 
 Simulated annealing results - Test id 2:
 
 .. figure:: lhs_sa_lin_10.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_lhs_sa_lin_10.png
-    :scale: 35 %
+    :scale: 65 %
 
 .. figure:: crit_sa_lin.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_mindist_crit.png
-    :scale: 35 %
+    :scale: 65 %
 
 .. figure:: lhs_mindist_proba.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_mindist_proba.png
-    :scale: 35 %
+    :scale: 65 %
 
 Simulated annealing criterion results - Test id 3 and 4:
 
 .. figure:: otlhs_c2_crit_big.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_c2_crit_big.png
-    :scale: 35 %
+    :scale: 65 %
 
 .. figure:: otlhs_mindist_crit_big.png
-    :scale: 35 %
+    :scale: 45 %
 
 .. figure:: dice_mindist_crit_big.png
-    :scale: 35 %
+    :scale: 65 %
 
 Results are very similar between the two implementations.
 It must be noted that there are many plots with probability 1.

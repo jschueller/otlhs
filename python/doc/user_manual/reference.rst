@@ -1,6 +1,6 @@
 Reference
 ---------
-This contains a detailled description of the algorithms
+This contains a detailled description of the algorithms.
 
 Optimal LHS design
 ^^^^^^^^^^^^^^^^^^
@@ -17,10 +17,12 @@ a space filling criterion.
 Principles
 ~~~~~~~~~~
 We may notice two types of LHS designs:
+
 - Centered design is obtained by choosing for each point the center of the corresponding cell
 - Randomized LHS is obtained by adding random perturbations inside each cell
 
 Let us fix the following properties for the input vector X:
+
 - Its marginals are independent
 - Its associated probabilistic measure is
 
@@ -35,7 +37,9 @@ iso-probabilistic transformation to get the result in the original domain.
 
 Let :math:`\phi : [0,1]^d \rightarrow \mathbb{R}^{+}` be a a space filling criterion, which is a measure of *accuracy* of an optimal LHS design. 
 Most of these criteria focus on discrepancy, which measures how far a given distribution of points deviates from a perfectly uniform one.
+
 Two space filling criteria are implemented:
+
 - The centered :math:`L^2`-discrepancy, called :math:`C_2` and given by:
 
 .. math::
@@ -44,13 +48,14 @@ Two space filling criteria are implemented:
                 + \frac{1}{N^2} \sum_{i,j=1}^{N} \prod_{k=1}^{d} \left( 1 + \frac{1}{2} |x_k^{(i)} - 0.5| + \frac{1}{2} |x_k^{(j)} - 0.5| - \frac{1}{2} |x_k^{(i)} - x_k^{(j)}| \right)
 
 This discrepancy is to be minimized to get an optimal design.
+
 - The mindist criterion (minimal distance between two points in the design):
 
-.. math::
+.. math:: \phi(X) = min_{} ||x^{(i)} - x^{(j)} ||_{L^2}, \forall i\neq j=1,\cdots N
 
-    \phi(X) = min_{} ||x^{(i)} - x^{(j)} ||_{L^2}, \forall i\neq j=1,\cdots N
 
 This criterion is to be maximized.
+
 - In practice, the :math:`\phi_p` criterion is used instead of mindist and writes:
 
 .. math::
